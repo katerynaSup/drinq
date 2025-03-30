@@ -12,9 +12,6 @@ build/
 **/dist/
 **/build/
 
-# User uploaded content
-backend/uploads/
-
 # Logs
 logs
 *.log

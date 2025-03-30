@@ -1,4 +1,5 @@
 from fastapi import APIRouter, File, UploadFile, HTTPException, Form, BackgroundTasks
+import whisper
 from fastapi.responses import JSONResponse, FileResponse
 from pydub import AudioSegment
 import os
@@ -7,6 +8,9 @@ import shutil
 from pathlib import Path
 
 router = APIRouter()
+
+# Load the Whisper model once when the module is imported
+model = whisper.load_model("base")
 
 UPLOAD_FOLDER = "uploads"
 os.makedirs(UPLOAD_FOLDER, exist_ok=True)
@@ -23,14 +27,28 @@ async def upload_file(file: UploadFile = File(...)):
         
         print(f"File saved to: {file_path}")
         
-        # For testing, return dummy data
-        # In production, you would process the audio here
+        # Transcribe the audio using Whisper
+        print("Starting transcription...")
+        result = model.transcribe(file_path)
+        print("Transcription complete")
+        
+        # Extract the full transcription
+        transcription = result["text"]
+        
+        # Extract the segments with timing information
+        segments = []
+        for segment in result["segments"]:
+            segments.append({
+                "text": segment["text"],
+                "start": segment["start"],
+                "end": segment["end"]
+            })
+        
+        print(f"Transcription has {len(segments)} segments")
+        
         return {
-            "transcription": "This is a test transcription.",
-            "segments": [
-                {"text": "This is segment one", "start": 0, "end": 2},
-                {"text": "This is segment two", "start": 2, "end": 4}
-            ]
+            "transcription": transcription,
+            "segments": segments
         }
     except Exception as e:
         print(f"Error in upload_file: {str(e)}")
