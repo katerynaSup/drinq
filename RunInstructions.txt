@@ -1,0 +1,17 @@
+
+
+Run FrontEnd 
+- navigate into frontend folder
+- maybe run "npm install" if you need to
+- run "npm run dev"
+- Navigate to the url given by the above command on browser
+
+
+Run backend 
+- navigate into backend folder 
+- pip install retirements 
+- run "uvicorn app:app --reload --port 5001"
+
+
+
+

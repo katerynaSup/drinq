@@ -123,7 +123,7 @@ import {
     Box,
     Divider
 } from '@mui/material';
-import axios from 'axios';
+// import axios from 'axios';
 
 function TranscriptionPage({ file, transcription, segments, setSegments }) {
   const navigate = useNavigate();
