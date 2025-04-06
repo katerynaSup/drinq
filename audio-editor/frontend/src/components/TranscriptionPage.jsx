@@ -44,6 +44,10 @@
 //     };
 
 //     return (
+
+
+
+
 //         <Container maxWidth="md">
 //             <Box sx={{ my: 4 }}>
 //                 <Typography variant="h4" component="h1" gutterBottom>
@@ -111,6 +115,15 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/TranscriptionPage.css';
+import {
+    Container,
+    Paper,
+    Button,
+    Typography,
+    Box,
+    Divider
+} from '@mui/material';
+import axios from 'axios';
 
 function TranscriptionPage({ file, transcription, segments, setSegments }) {
   const navigate = useNavigate();
@@ -174,6 +187,7 @@ function TranscriptionPage({ file, transcription, segments, setSegments }) {
         >
           Transcript
         </div>
+        
         <div 
           className={`tab ${activeTab === 'noise' ? 'active' : ''}`}
           onClick={() => setActiveTab('noise')}
@@ -198,7 +212,7 @@ function TranscriptionPage({ file, transcription, segments, setSegments }) {
             
             <div className="filter-item">
               <div className="filter-header">
-                <span>Topic</span>
+                <span>Lables</span>
                 <svg className="filter-icon" viewBox="0 0 24 24">
                   <path d="M7 10l5 5 5-5z"/>
                 </svg>
@@ -226,6 +240,13 @@ function TranscriptionPage({ file, transcription, segments, setSegments }) {
                   )}
                 </div>
                 <div className="segment-text">{segment.text}</div>
+                <Button
+                  size="small"
+                  color="error"
+                  onClick={() => handleDeleteSegment(index)}
+                  sx={{ ml: 1 }}>
+                  Delete
+                </Button>
               </div>
             );
           })}
@@ -239,6 +260,14 @@ function TranscriptionPage({ file, transcription, segments, setSegments }) {
         >
           To upload another video
         </button>
+
+        <button 
+          className="secondary-button"
+          onClick={() => handleSaveEdit()}
+        >
+          Save new audio
+        </button>
+        
       </div>
     </div>
   );
