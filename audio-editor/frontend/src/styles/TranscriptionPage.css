@@ -1,0 +1,125 @@
+.transcription-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-height: 100vh;
+  }
+  
+  .tabs-container {
+    display: flex;
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 20px;
+  }
+  
+  .tab {
+    padding: 16px 24px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+  }
+  
+  .tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+  }
+  
+  .content-area {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+  }
+  
+  .sidebar {
+    width: 250px;
+    padding: 20px;
+    border-right: 1px solid var(--border-color);
+  }
+  
+  .filter-section h3 {
+    font-size: 18px;
+    margin-bottom: 16px;
+  }
+  
+  .filter-item {
+    margin-bottom: 12px;
+    padding: 8px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .filter-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .transcript-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+  }
+  
+  .segment {
+    margin-bottom: 24px;
+  }
+  
+  .segment-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  .voice-label {
+    font-weight: 600;
+    margin-right: 12px;
+  }
+  
+  .time-label {
+    color: var(--text-color);
+    opacity: 0.7;
+    font-size: 14px;
+  }
+  
+  .noise-tag {
+    margin-left: 12px;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 12px;
+    color: white;
+  }
+  
+  .noise-tag.static {
+    background-color: var(--noise-static);
+  }
+  
+  .noise-tag.long-pause {
+    background-color: var(--noise-pause);
+  }
+  
+  .noise-tag.sponsor {
+    background-color: var(--noise-sponsor);
+  }
+  
+  .segment-text {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .actions-bar {
+    padding: 16px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: flex-start;
+  }
