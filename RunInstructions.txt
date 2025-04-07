@@ -9,7 +9,7 @@ Run FrontEnd
 
 Run backend 
 - navigate into backend folder 
-- pip install retirements 
+- pip install -r requirements.txt
 - run "uvicorn app:app --reload --port 5001"
 
 
