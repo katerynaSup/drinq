@@ -1,0 +1,239 @@
+.phone-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background-color: #2c3e50;  /* Darker background for contrast */
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  overflow: auto;
+}
+
+.phone-frame-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.phone-frame {
+  width: 100%;
+  max-width: 375px;
+  height: 80vh;
+  max-height: 812px;
+  background-color: var(--background-color);
+  border-radius: 30px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  border: 8px solid #222;
+}
+
+/* Remove the problematic hover effect entirely */
+.phone-frame:hover {
+  /* transform: scale(0.98) rotate(0.5deg); - This causes blurriness */
+  /* Replace with a simpler effect that doesn't cause blurring */
+  box-shadow: 0 0 40px rgba(200, 169, 126, 0.4), 0 20px 50px rgba(0, 0, 0, 0.7);
+}
+
+.phone-top-notch {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 25px;
+  background-color: black;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+}
+
+.notch-content {
+  width: 170px;
+  height: 25px;
+  background-color: black;
+  border-bottom-left-radius: 18px;
+  border-bottom-right-radius: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.phone-camera {
+  width: 8px;
+  height: 8px;
+  background-color: #1a1a1a;
+  border-radius: 50%;
+  border: 2px solid #444;
+}
+
+.phone-status-bar {
+  height: 24px;
+  width: 100%;
+  padding: 5px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  margin-top: 25px;
+  background-color: white;
+}
+
+.status-icons {
+  display: flex;
+  gap: 8px;
+}
+
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background-color: var(--background-color);
+}
+
+.phone-home-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 140px;
+  height: 5px;
+  background-color: #000;
+  border-radius: 3px;
+}
+
+/* Adjust your existing app styles to work within the phone frame */
+.app-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Mobile-specific styles */
+.phone-screen h1 {
+  font-size: 20px; /* Reduced from 24px */
+  margin-top: 5px; /* Reduced from 10px */
+  margin-bottom: 5px;
+  font-weight: 1000;
+}
+
+.phone-screen h2 {
+  font-size: 16px; /* Reduced from 20px */
+  font-weight: 1000;
+  margin-bottom: 5px;
+}
+
+.phone-screen h3 {
+  font-size: 14px;
+  font-weight: 1000;
+  margin-bottom: 3px;
+}
+
+.phone-screen p {
+  font-size: 13px;
+  margin-bottom: 5px;
+  line-height: 1.4;
+  font-weight: 1000;
+  color: #333333;
+}
+
+.action-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  padding: 0 10px; 
+  margin-bottom: 15px; 
+}
+
+.action-card {
+  border-radius: 15px;
+  padding: 12px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 8px; 
+}
+
+.featured-drinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; 
+  padding: 0 10px; 
+}
+
+.featured-drink {
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.featured-drink img {
+  width: 100%;
+  height: 120px; 
+  object-fit: cover;
+}
+
+.button {
+  display: inline-block;
+  padding: 8px 15px; 
+  border-radius: 30px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  margin-top: 5px; 
+  font-size: 13px;
+}
+
+.home-container header {
+  margin-bottom: 15px; 
+}
+
+.featured-section {
+  padding: 5px 0; 
+}
+
+.featured-section h2 {
+  margin-bottom: 8px; 
+}
+
+.phone-screen > div {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.phone-screen:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 150px;
+  background: linear-gradient(to bottom, 
+    rgba(216, 175, 55, 0.08) 0%,
+    rgba(0, 0, 0, 0) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.phone-screen:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  z-index: 1;
+}

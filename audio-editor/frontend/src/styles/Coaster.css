@@ -1,0 +1,43 @@
+.coaster {
+  position: fixed;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(20, 20, 20, 0.9);
+  border: 1px solid var(--accent-color);
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  z-index: 1000;
+}
+
+.coaster.visible {
+  bottom: 40px;
+  opacity: 1;
+}
+
+.coaster p {
+  color: var(--primary-color);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.coaster:after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  right: 3px;
+  bottom: 3px;
+  border: 1px dashed rgba(200, 169, 126, 0.3);
+  border-radius: 50%;
+  pointer-events: none;
+} 

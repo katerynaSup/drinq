@@ -1,0 +1,60 @@
+{
+  "triple sec": [
+    {"substitute": "cointreau", "authenticity": 95, "notes": "Premium orange liqueur, slightly stronger"},
+    {"substitute": "grand marnier", "authenticity": 90, "notes": "More complex with cognac base"},
+    {"substitute": "orange juice", "authenticity": 50, "notes": "Non-alcoholic option, use with orange zest"}
+  ],
+  "lime juice": [
+    {"substitute": "lemon juice", "authenticity": 75, "notes": "More tart, use 3/4 the amount"},
+    {"substitute": "bottled lime juice", "authenticity": 60, "notes": "Less fresh but convenient"}
+  ],
+  "simple syrup": [
+    {"substitute": "sugar", "authenticity": 85, "notes": "Dissolve in warm liquid first"},
+    {"substitute": "honey", "authenticity": 80, "notes": "Adds honey flavor, use 3/4 the amount"},
+    {"substitute": "agave nectar", "authenticity": 85, "notes": "Good for tequila drinks"}
+  ],
+  "vodka": [
+    {"substitute": "gin", "authenticity": 70, "notes": "Adds botanical flavors"},
+    {"substitute": "white rum", "authenticity": 75, "notes": "Adds slight sweetness"}
+  ],
+  "rum": [
+    {"substitute": "whiskey", "authenticity": 60, "notes": "Creates a very different flavor profile"},
+    {"substitute": "brandy", "authenticity": 65, "notes": "Works best in fruity drinks"}
+  ],
+  "tequila": [
+    {"substitute": "mezcal", "authenticity": 90, "notes": "Adds smoky flavor"},
+    {"substitute": "white rum", "authenticity": 60, "notes": "Milder alternative"}
+  ],
+  "gin": [
+    {"substitute": "vodka", "authenticity": 70, "notes": "Removes botanical flavors"},
+    {"substitute": "white rum", "authenticity": 60, "notes": "For fruity drinks"}
+  ],
+  "sweet vermouth": [
+    {"substitute": "dry vermouth + sugar", "authenticity": 75, "notes": "Add 1/4 tsp sugar per oz"},
+    {"substitute": "port wine", "authenticity": 70, "notes": "Sweeter and heavier"}
+  ],
+  "dry vermouth": [
+    {"substitute": "white wine", "authenticity": 70, "notes": "Use dry white wine"},
+    {"substitute": "sake", "authenticity": 65, "notes": "Good in martini-style drinks"}
+  ],
+  "angostura bitters": [
+    {"substitute": "other aromatic bitters", "authenticity": 85, "notes": "Different but similar profile"},
+    {"substitute": "orange bitters", "authenticity": 60, "notes": "Citrus instead of spice notes"}
+  ],
+  "cream": [
+    {"substitute": "half-and-half", "authenticity": 80, "notes": "Slightly less rich"},
+    {"substitute": "coconut cream", "authenticity": 70, "notes": "Adds coconut flavor"}
+  ],
+  "mint leaves": [
+    {"substitute": "basil leaves", "authenticity": 60, "notes": "Different but refreshing herb"},
+    {"substitute": "mint extract", "authenticity": 50, "notes": "Just a few drops"}
+  ],
+  "club soda": [
+    {"substitute": "sparkling water", "authenticity": 95, "notes": "Nearly identical"},
+    {"substitute": "tonic water", "authenticity": 60, "notes": "Adds sweetness and quinine flavor"}
+  ],
+  "grenadine": [
+    {"substitute": "pomegranate juice + sugar", "authenticity": 80, "notes": "More natural flavor"},
+    {"substitute": "raspberry syrup", "authenticity": 70, "notes": "Different fruit but similar color"}
+  ]
+} 

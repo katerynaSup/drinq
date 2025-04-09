@@ -7,26 +7,19 @@ import whisper
 from pathlib import Path
 
 # Import the router we'll create
-from routers.audio import router as audio_router
+from routers import drinks
 
 # Create FastAPI app
 app = FastAPI(
-    title="Audio Transcription API",
-    description="API for audio transcription and editing",
+    title="Bar Drink Recommender",
+    description="An API for recommending bar drinks based on user preferences",
     version="1.0.0"
 )
 
-# CORS configuration
-origins = [
-    "http://localhost:5173",
-    "http://127.0.0.1:5173",
-    "http://localhost:5001",
-    "http://127.0.0.1:5001",
-]
-
+# Configure CORS for frontend access
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["http://localhost:3000"],  # Your React frontend
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -38,7 +31,17 @@ model = whisper.load_model("base")
 print("Whisper model loaded")
 
 # Include the audio router
-app.include_router(audio_router, prefix="/api")
+app.include_router(drinks.router, prefix="/api", tags=["drinks"])
+
+# Create the data directory if it doesn't exist
+data_dir = Path(__file__).parent / "data"
+os.makedirs(data_dir, exist_ok=True)
+
+# Ensure the drinks.json file exists
+drinks_file = data_dir / "drinks.json"
+if not drinks_file.exists():
+    with open(drinks_file, "w") as f:
+        f.write("[]")  # Initialize with empty array
 
 # Health check endpoint
 @app.get("/api/health")
@@ -59,4 +62,11 @@ if frontend_path.exists():
         
         return FileResponse(str(frontend_path / "index.html"))
 else:
-    print("Warning: Frontend build folder not found. Only API will be available.") 
+    print("Warning: Frontend build folder not found. Only API will be available.")
+
+# Make sure the API can access the data directory
+app.mount("/data", StaticFiles(directory=os.path.join(os.path.dirname(__file__), "data")), name="data")
+
+if __name__ == "__main__":
+    import uvicorn
+    uvicorn.run("app:app", host="0.0.0.0", port=8000, reload=True) 
