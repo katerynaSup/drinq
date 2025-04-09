@@ -2,56 +2,41 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.css';
 import PreferenceForm from './components/PreferenceForm';
-import PhoneFrame from './components/PhoneFrame';
 import BarNavbar from './components/BarNavbar';
 import IngredientsSearchPage from './components/IngredientsSearchPage';
+import IngredientRecommendationsPage from './components/IngredientRecommendationsPage';
 
 // Placeholder components - you'll create these later
 const HomePage = () => {
     return (
-        <div className="home-container">
-            <header>
+        <div className="page-container">
+            <div className="page-header">
                 <h1>Bar Drink Explorer</h1>
                 <p>Discover the perfect drink for any occasion</p>
-            </header>
-
-            <div className="action-cards">
-                <div className="action-card">
-                    <h2>Find by Preference</h2>
-                    <p>Tell us what you like, and we'll recommend the perfect drink.</p>
-                    <a href="/preferences" className="button primary-button">Start Quiz</a>
-                </div>
-
-                <div className="action-card">
-                    <h2>Search by Ingredients</h2>
-                    <p>Have specific ingredients? Find drinks you can make right now.</p>
-                    <a href="/ingredients" className="button primary-button">Search</a>
-                </div>
-
-                <div className="action-card">
-                    <h2>Browse Popular Drinks</h2>
-                    <p>Explore classic and trending cocktails from around the world.</p>
-                    <a href="/explore" className="button primary-button">Explore</a>
-                </div>
             </div>
 
-            <div className="featured-section">
-                <h2>Featured This Week</h2>
-                <div className="featured-drinks">
-                    <div className="featured-drink">
-                        <img src="/images/drinks/mojito.jpg" alt="Mojito" />
-                        <h3>Mojito</h3>
-                        <p>A refreshing Cuban classic with rum, mint, and lime</p>
+            <div className="grid-layout">
+                <div className="card">
+                    <div className="card-content">
+                        <h2>Find by Preference</h2>
+                        <p>Tell us what you like, and we'll recommend the perfect drink.</p>
+                        <a href="/preferences" className="button primary-button">Start Quiz</a>
                     </div>
-                    <div className="featured-drink">
-                        <img src="/images/drinks/old-fashioned.jpg" alt="Old Fashioned" />
-                        <h3>Old Fashioned</h3>
-                        <p>A timeless whiskey cocktail that's simple yet sophisticated</p>
+                </div>
+
+                <div className="card">
+                    <div className="card-content">
+                        <h2>Search by Ingredients</h2>
+                        <p>Have specific ingredients? Find drinks you can make right now.</p>
+                        <a href="/ingredients" className="button primary-button">Search</a>
                     </div>
-                    <div className="featured-drink">
-                        <img src="/images/drinks/margarita.jpg" alt="Margarita" />
-                        <h3>Margarita</h3>
-                        <p>The quintessential tequila cocktail with citrus and salt</p>
+                </div>
+
+                <div className="card">
+                    <div className="card-content">
+                        <h2>Browse Popular Drinks</h2>
+                        <p>Explore classic and trending cocktails from around the world.</p>
+                        <a href="/explore" className="button primary-button">Explore</a>
                     </div>
                 </div>
             </div>
@@ -60,23 +45,34 @@ const HomePage = () => {
 };
 
 const RecommendationsPage = ({ recommendations }) => {
+    if (!recommendations || recommendations.length === 0) {
+        return (
+            <div className="page-container">
+                <div className="page-header">
+                    <h1>Recommendations</h1>
+                    <p>No recommendations yet. Please fill out the preferences form.</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
-        <div className="recommendations-container">
-            <h1>Your Personalized Recommendations</h1>
-            {recommendations && recommendations.length > 0 ? (
-                <div className="recommendations-list">
-                    {recommendations.map(drink => (
-                        <div key={drink.id} className="drink-card">
-                            <img src={drink.image_url || "/images/drinks/default.jpg"} alt={drink.name} />
+        <div className="page-container">
+            <div className="page-header">
+                <h1>Your Recommended Drinks</h1>
+            </div>
+            <div className="grid-layout">
+                {recommendations.map(drink => (
+                    <div key={drink.id} className="card">
+                        <img src={drink.image} alt={drink.name} className="card-image" />
+                        <div className="card-content">
                             <h2>{drink.name}</h2>
                             <p>{drink.description}</p>
-                            <a href={`/drinks/${drink.id}`} className="button">View Recipe</a>
+                            <a href={`/drinks/${drink.id}`} className="button primary-button">View Recipe</a>
                         </div>
-                    ))}
-                </div>
-            ) : (
-                <p>No recommendations yet. Try adjusting your preferences!</p>
-            )}
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
@@ -109,9 +105,9 @@ function App() {
 
     return (
         <Router>
-            <PhoneFrame>
-                <div className="app-container">
-                    <BarNavbar />
+            <div className="app-container">
+                <BarNavbar />
+                <main className="main-content">
                     <Routes>
                         <Route path="/" element={<HomePage />} />
                         <Route
@@ -123,11 +119,15 @@ function App() {
                             element={<RecommendationsPage recommendations={recommendations} />}
                         />
                         <Route path="/ingredients" element={<IngredientsSearchPage />} />
-                        <Route path="/explore" element={<div>Explore Drinks (Coming Soon)</div>} />
-                        <Route path="/drinks/:id" element={<div>Individual Drink Detail (Coming Soon)</div>} />
+                        <Route path="/explore" element={<div className="page-container">Explore Drinks (Coming Soon)</div>} />
+                        <Route path="/drinks/:id" element={<div className="page-container">Individual Drink Detail (Coming Soon)</div>} />
+                        <Route path="/ingredient-recommendations" element={<IngredientRecommendationsPage />} />
                     </Routes>
-                </div>
-            </PhoneFrame>
+                </main>
+                <footer className="site-footer">
+                    <p>&copy; {new Date().getFullYear()} Bar Drink Explorer</p>
+                </footer>
+            </div>
         </Router>
     );
 }

@@ -2,8 +2,9 @@ import React, { useState, useEffect } from 'react';
 import IngredientCard from './IngredientCard';
 import ShoppingCart from './ShoppingCart';
 import '../styles/IngredientsSearchPage.css';
+import vodkaImage from '../assets/images/ingredients/vodka.png';
 
-// mock data
+// mock data with fixed image paths
 const MOCK_INGREDIENTS = [
     {
         id: 'vodka',
@@ -11,7 +12,7 @@ const MOCK_INGREDIENTS = [
         description: 'A clear distilled alcoholic beverage that originated in Eastern Europe.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../../images/ingredients/vodka.png'
+        image_url: vodkaImage
     },
     {
         id: 'rum',
@@ -19,7 +20,7 @@ const MOCK_INGREDIENTS = [
         description: 'A distilled alcoholic drink made by fermenting and then distilling sugarcane.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../../images/ingredients/rum.png'
+        image_url: '../assets/images/ingredients/rum.png'
     },
     {
         id: 'gin',
@@ -27,7 +28,7 @@ const MOCK_INGREDIENTS = [
         description: 'A distilled alcoholic drink that derives its flavor from juniper berries.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../../images/ingredients/gin.png'
+        image_url: '../assets/images/ingredients/gin.png'
     },
     {
         id: 'tequila',
@@ -35,7 +36,7 @@ const MOCK_INGREDIENTS = [
         description: 'A distilled beverage made from the blue agave plant in Mexico.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../../images/ingredients/tequila.png'
+        image_url: '../assets/images/ingredients/tequila.png'
     },
     {
         id: 'orange-juice',
@@ -43,7 +44,7 @@ const MOCK_INGREDIENTS = [
         description: 'Fresh squeezed juice from oranges, adds a bright citrus flavor.',
         type: 'Juice',
         alcohol_content: 0,
-        image_url: '../../images/ingredients/orange-juice.png'
+        image_url: '../assets/images/ingredients/orange-juice.png'
     },
     {
         id: 'lime-juice',
@@ -51,7 +52,7 @@ const MOCK_INGREDIENTS = [
         description: 'Tart citrus juice that adds brightness to cocktails.',
         type: 'Juice',
         alcohol_content: 0,
-        image_url: '../../images/ingredients/lime-juice.npg'
+        image_url: '../assets/images/ingredients/lime-juice.png'
     },
     {
         id: 'simple-syrup',
@@ -59,7 +60,7 @@ const MOCK_INGREDIENTS = [
         description: 'Equal parts sugar and water, used to sweeten cocktails.',
         type: 'Syrup',
         alcohol_content: 0,
-        image_url: '../../images/ingredients/simple-syrup.png'
+        image_url: '../assets/images/ingredients/simple-syrup.png'
     },
     {
         id: 'grenadine',
@@ -67,7 +68,7 @@ const MOCK_INGREDIENTS = [
         description: 'Sweet, tart syrup made from pomegranate juice.',
         type: 'Syrup',
         alcohol_content: 0,
-        image_url: '../../images/ingredients/grenadine.png'
+        image_url: '../assets/images/ingredients/grenadine.png'
     },
     {
         id: 'bitters',
@@ -75,7 +76,7 @@ const MOCK_INGREDIENTS = [
         description: 'Concentrated botanical infusion that adds complexity.',
         type: 'Bitters',
         alcohol_content: 44,
-        image_url: '../../images/ingredients/bitters.png'
+        image_url: '../assets/images/ingredients/bitters.png'
     },
     {
         id: 'mint',
@@ -83,7 +84,7 @@ const MOCK_INGREDIENTS = [
         description: 'Aromatic herb used in many cocktails like Mojitos.',
         type: 'Herb',
         alcohol_content: 0,
-        image_url: '../../images/ingredients/mint.png'
+        image_url: '../assets/images/ingredients/mint.png'
     }
 ];
 
@@ -95,12 +96,24 @@ const IngredientsSearchPage = () => {
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState('all');
 
-    // load ingredients (mock data for now)
+    // Load ingredients (mock data for now)
     useEffect(() => {
-        // Using mock data
         setIngredients(MOCK_INGREDIENTS);
         setFilteredIngredients(MOCK_INGREDIENTS);
     }, []);
+
+    // Load cart from localStorage on initial render
+    useEffect(() => {
+        const savedCart = localStorage.getItem('ingredientCart');
+        if (savedCart) {
+            setCartItems(JSON.parse(savedCart));
+        }
+    }, []);
+
+    // Save cart to localStorage whenever it changes
+    useEffect(() => {
+        localStorage.setItem('ingredientCart', JSON.stringify(cartItems));
+    }, [cartItems]);
 
     // search and filtering
     useEffect(() => {
@@ -123,9 +136,18 @@ const IngredientsSearchPage = () => {
     }, [searchTerm, ingredients, activeFilter]);
 
     const handleAddToCart = (ingredient) => {
-        //  if already in cart
+        // Check if already in cart by ID
         if (!cartItems.some(item => item.id === ingredient.id)) {
-            setCartItems([...cartItems, ingredient]);
+            const newCartItems = [...cartItems, ingredient];
+            setCartItems(newCartItems);
+
+            // Show cart feedback
+            setIsCartOpen(true);
+            // Auto-hide cart after 2 seconds
+            setTimeout(() => setIsCartOpen(false), 2000);
+        } else {
+            // Provide feedback that item is already in cart
+            alert(`${ingredient.name} is already in your cart`);
         }
     };
 
@@ -134,74 +156,87 @@ const IngredientsSearchPage = () => {
     };
 
     return (
-        <div className="ingredients-search-page">
-            <div className="search-header">
+        <div className="page-container">
+            <div className="page-header">
                 <h1>Ingredient Search</h1>
                 <p>Find ingredients to make your perfect drink</p>
-
-                <div className="search-container">
-                    <input
-                        type="text"
-                        placeholder="Search ingredients..."
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                        className="search-input"
-                    />
-                </div>
-
-                <div className="filter-tabs">
-                    <button
-                        className={`filter-tab ${activeFilter === 'all' ? 'active' : ''}`}
-                        onClick={() => setActiveFilter('all')}
-                    >
-                        All
-                    </button>
-                    <button
-                        className={`filter-tab ${activeFilter === 'spirit' ? 'active' : ''}`}
-                        onClick={() => setActiveFilter('spirit')}
-                    >
-                        Spirits
-                    </button>
-                    <button
-                        className={`filter-tab ${activeFilter === 'juice' ? 'active' : ''}`}
-                        onClick={() => setActiveFilter('juice')}
-                    >
-                        Juices
-                    </button>
-                    <button
-                        className={`filter-tab ${activeFilter === 'syrup' ? 'active' : ''}`}
-                        onClick={() => setActiveFilter('syrup')}
-                    >
-                        Syrups
-                    </button>
-                    <button
-                        className={`filter-tab ${activeFilter === 'herb' ? 'active' : ''}`}
-                        onClick={() => setActiveFilter('herb')}
-                    >
-                        Herbs
-                    </button>
-                </div>
             </div>
 
-            <div className="cart-status" onClick={() => setIsCartOpen(true)}>
-                <span className="cart-icon">🛒</span>
-                <span className="cart-count">{cartItems.length}</span>
+            <div className="search-container">
+                <input
+                    type="text"
+                    placeholder="Search ingredients..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="input-field"
+                />
             </div>
 
-            <div className="ingredients-grid">
+            <div className="filter-tabs">
+                <button
+                    className={`button ${activeFilter === 'all' ? 'primary-button' : 'secondary-button'}`}
+                    onClick={() => setActiveFilter('all')}
+                >
+                    All
+                </button>
+                <button
+                    className={`button ${activeFilter === 'spirit' ? 'primary-button' : 'secondary-button'} button-border`}
+                    onClick={() => setActiveFilter('spirit')}
+                >
+                    Spirits
+                </button>
+                <button
+                    className={`button ${activeFilter === 'juice' ? 'primary-button' : 'secondary-button'}`}
+                    onClick={() => setActiveFilter('juice')}
+                >
+                    Juices
+                </button>
+                <button
+                    className={`button ${activeFilter === 'syrup' ? 'primary-button' : 'secondary-button'}`}
+                    onClick={() => setActiveFilter('syrup')}
+                >
+                    Syrups
+                </button>
+                <button
+                    className={`button ${activeFilter === 'herb' ? 'primary-button' : 'secondary-button'}`}
+                    onClick={() => setActiveFilter('herb')}
+                >
+                    Herbs
+                </button>
+            </div>
+
+            <div className="grid-layout">
                 {filteredIngredients.length > 0 ? (
                     filteredIngredients.map(ingredient => (
-                        <IngredientCard
-                            key={ingredient.id}
-                            ingredient={ingredient}
-                            onAddToCart={handleAddToCart}
-                        />
+                        <div key={ingredient.id} className="card">
+                            <img src={ingredient.image} alt={ingredient.name} className="card-image" />
+                            <div className="card-content">
+                                <h2>{ingredient.name}</h2>
+                                <p>{ingredient.type}</p>
+                                <button
+                                    onClick={() => handleAddToCart(ingredient)}
+                                    className="button primary-button"
+                                    disabled={cartItems.some(item => item.id === ingredient.id)}
+                                >
+                                    {cartItems.some(item => item.id === ingredient.id) ? 'Added' : 'Add to Cart'}
+                                </button>
+                            </div>
+                        </div>
                     ))
                 ) : (
                     <div className="no-results">
-                        <p>No ingredients found.</p>
-                        <p>Try adjusting your search criteria.</p>
+                        <p>No ingredients found matching your search.</p>
                     </div>
+                )}
+            </div>
+
+            <div
+                className={`cart-status ${cartItems.length > 0 ? 'has-items' : ''}`}
+                onClick={() => setIsCartOpen(true)}
+            >
+                <span className="cart-icon">🛒</span>
+                {cartItems.length > 0 && (
+                    <span className="cart-count">{cartItems.length}</span>
                 )}
             </div>
 

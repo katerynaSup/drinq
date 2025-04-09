@@ -2,7 +2,7 @@
   background-color: var(--card-bg);
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 15px rgb(244, 243, 243);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   height: 100%;
   display: flex;
@@ -11,7 +11,7 @@
 
 .ingredient-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 20px rgb(253, 252, 218);
 }
 
 .ingredient-image-container {
@@ -47,7 +47,7 @@
 .ingredient-description {
   font-size: 14px;
   color: #555;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   flex-grow: 1;
   display: -webkit-box;
   -webkit-line-clamp: 3;
@@ -58,34 +58,35 @@
 .ingredient-meta {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 12px;
-  font-size: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
 }
 
 .ingredient-type {
-  background-color: rgba(69, 20, 20, 0.1);
-  padding: 3px 8px;
-  border-radius: 12px;
+  background-color: rgb(24, 12, 12);
+  padding: 5px 10px;
+  border-radius: 15px;
   color: var(--accent-dark);
 }
 
 .ingredient-alcohol {
-  color: #777;
+  color: #120c0c;
 }
 
 .add-to-cart-button {
   background-color: var(--primary-color);
   color: var(--background-color);
   border: none;
-  border-radius: 20px;
-  padding: 8px 0;
+  border-radius: 25px;
+  padding: 10px 0;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
   margin-top: auto;
 }
 
 .add-to-cart-button:hover {
   background-color: var(--accent-color);
+  transform: translateY(-2px);
 } 

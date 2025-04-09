@@ -1,22 +1,29 @@
 /* clean this up later, we dont use some of these colors */
 :root {
   /* Bar-inspired color palette */
-  --background-color: #451414; 
-  --text-color: #ffedce;
-  --accent-color: #c8a97e; 
-  --accent-dark: #8c6d3f; /* Darker amber */
-  --primary-color: #fff2c6; 
-  --secondary-color: #fff2c6; 
-  --tertiary-color: #1f3a4d; /* idt we use this */
-  --card-bg: #ffedce; /* Slightly lighter than background for cards */
-  --light-gray: #333333;
-  --border-color: #d8d0c2;
-  --button-color: #301616;
-  --button-text: #333333;
-  --shadow-color: rgba(223, 64, 244, 0.1);
-  --noise-static: #607d8b;
-  --noise-pause: #795548;
-  --noise-sponsor: #8d6e63;
+   --background-color: #0c0c0c;
+   --background-image: url('../assets/images/dark-wood-background.jpg');
+  --text-color: #f4eeee;
+  --accent-color: #f0e9e9; /* Dark crimson */
+  --accent-dark: #5a1f1f;
+  --primary-color: #fbfbfb; /* A warm gold-tan */
+  --secondary-color: #f7f6f6;
+  --tertiary-color: #1e2b34; /* Dark muted teal */
+  --card-bg: rgb(255, 255, 255);
+  --light-gray: #2a2a2a;
+  --border-color: #f70e1e;
+  --button-color: #241919;
+  --button-text: #fafafa;
+  --shadow-color: rgba(251, 255, 192, 0.854);
+  /* Flavor tags / audio cues */
+  --noise-static: #405c63; /* Muted steel blue */
+  --noise-pause: #6f4e37; /* Coffee brown */
+  --noise-sponsor: #b77e64; /* Clay/muted copper */
+
+  --standard-padding: 40px; /* Increased padding */
+  --page-internal-padding: 20px;
+  --card-border-radius: 12px;
+  --button-border-radius: 30px;
 }
 
 * {
@@ -34,6 +41,10 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
   line-height: 1.6;
+  background-blend-mode: overlay;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
 }
 
 h1, h2, h3 {
@@ -43,7 +54,10 @@ h1, h2, h3 {
 
 p {
   font-family: 'Open Sans', sans-serif;
-  color: #fff2c6;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
 }
 
 html, body, #root {
@@ -54,30 +68,28 @@ html, body, #root {
 }
 
 .app-container {
-  height: 100%;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  padding-bottom: 70px;
-  width: 100%;
-  overflow-x: hidden;
-  padding: 0;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  position: relative;
-  margin: 0 auto;
-  border-radius: 20px;
-  background-color: var(--background-color);
-  background-image: url('/images/dark-wood-texture.jpg');
-  background-blend-mode: overlay;
-  background-size: cover;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
 }
 
 .home-container, 
 .ingredients-search-page,
 .recommendations-container {
-  min-height: 100%;
-  padding-bottom: 30px;
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 20px var(--standard-padding);
+  min-height: calc(100vh - 130px);
 }
 
 button {
@@ -95,7 +107,7 @@ button:disabled {
 
 .primary-button {
   background-color: var(--primary-color);
-  color: white;
+  color: var(--background-color);
   padding: 12px 24px;
   border-radius: 30px;
   font-size: 16px;
@@ -154,25 +166,18 @@ button:disabled {
 
 styles */
 .home-container {
-  padding: 8px;
-  width: 100%;
-  box-sizing: border-box;
-  max-width: none;
-  overflow-x: hidden;
+  /* Remove any custom styling here */
+  /* This ensures it uses the same styles as page-container */
 }
 
 .home-container header {
   text-align: center;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 .home-container h1 {
-  color: var(--primary-color);
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  font-size: 22px;
-  margin-bottom: 8px;
+  font-size: 32px;
+  margin-bottom: 10px;
 }
 
 .home-container header p {
@@ -182,10 +187,13 @@ styles */
 }
 
 .action-cards {
-  margin-bottom: 30px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
 }
 
-.action-card, .featured-drink, .drink-card {
+.action-card, .drink-card {
   background-color: var(--card-bg);
   border: 1px solid rgba(200, 169, 126, 0.2);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -195,7 +203,7 @@ styles */
   max-width: none;
 }
 
-.action-card:hover, .featured-drink:hover, .drink-card:hover {
+.action-card:hover, .drink-card:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
 }
@@ -211,28 +219,6 @@ styles */
   color: #fff2c6;
   font-size: 14px;
 }
-
-.featured-section {
-  padding: 15px 0;
-}
-
-.featured-section h2 {
-  margin-bottom: 15px;
-  text-align: center;
-  color: var(--text-color);
-}
-
-.featured-drink h3 {
-  padding: 10px 15px 5px;
-  color: var(--primary-color);
-}
-
-.featured-drink p {
-  padding: 0 15px;
-  font-size: 14px;
-  color: #ef2727;
-}
-
 /* Recommendations page */
 .recommendations-container {
   width: 100%;
@@ -381,31 +367,172 @@ styles */
   background-color: var(--tertiary-color);
   color: var(--text-color);
 }
+/* Footer styles */
+.site-footer {
+  background-color: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+}
 
-.featured-drink img, .drink-card img {
-  filter: brightness(0.9) contrast(1.1);
+/* Responsive */
+@media (max-width: 1900px) {
+  .action-cards,
+  .main-content {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 1900px) {
+  :root {
+    --max-content-width: 1900px !important; /* Force it to stay at 1900px */
+  }
+  
+  .ingredients-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); /* Even more columns on very wide screens */
+  }
+}
+
+@media (min-width: 2000px) {
+  :root {
+    --max-content-width: 1900px; /* Cap at an extremely wide but still reasonable size */
+  }
+}
+
+/* Create a standard page container class that all pages will use */
+.page-container {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: var(--page-internal-padding) var(--standard-padding);
+  box-sizing: border-box;
+  min-height: calc(100vh - 130px);
+}
+
+/* Make ALL page containers use the same dimensions */
+.page-container,
+.home-container,
+.recommendations-container,
+.recommendation-page,
+.ingredients-search-page {
+  width: 100%;
+  max-width: var(--max-content-width);
+  margin: 0 auto;
+  padding: 20px var(--standard-padding);
+  box-sizing: border-box;
+  min-height: calc(100vh - 130px);
+}
+
+/* Ensure main-content properly centers all content */
+.main-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+}
+
+/* Global Typography - Apply to ALL pages */
+h1 {
+  font-family: 'Open Sans', serif;
+  color: var(--primary-color);
+  font-size: 32px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  font-family: 'Open Sans', serif;
+  color: var(--primary-color);
+  font-size: 24px;
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+h3 {
+  font-family: 'Open Sans', serif;
+  color: var(--primary-color);
+  font-size: 20px;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* Standard header for all pages */
+.page-header {
+  text-align: center;
+  margin-bottom: 30px;
+  width: 100%;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Consistent grid layout for ALL pages */
+.grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 25px;
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+
+/* Consistent card styling - ALL cards should use this base */
+.card {
+  background-color: var(--card-bg);
+  border-radius: var(--card-border-radius);
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.card-content {
+  padding: 20px;
+}
+
+/* Consistent button styling */
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: var(--button-border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+}
+
+.primary-button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+}
+
+.primary-button:hover {
+  background-color: var(--accent-color);
+  transform: translateY(-2px);
+}
+
+/* Consistent input styling */
+.input-field {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
+  color: var(--text-color);
+  font-size: 16px;
   transition: all 0.3s ease;
 }
 
-.featured-drink:hover img, .drink-card:hover img {
-  filter: brightness(1.05) contrast(1.15);
-}
-
-/* Add a subtle glossy overlay for cocktail glassware feel */
-.featured-drink, .drink-card {
-  position: relative;
-}
-
-.featured-drink:before, .drink-card:before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 120px; /* Match your image height */
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.1) 0%, 
-    rgba(255, 255, 255, 0) 50%);
-  z-index: 5;
-  pointer-events: none;
+.input-field:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(255, 242, 198, 0.3);
 }
