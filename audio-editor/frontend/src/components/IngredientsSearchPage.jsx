@@ -10,6 +10,14 @@ import orangeJuiceImage from '../assets/images/ingredients/orange-juice.png';
 import limeJuiceImage from '../assets/images/ingredients/lime.png';
 import simpleSyrupImage from '../assets/images/ingredients/simple-syrup.png';
 import grenadineImage from '../assets/images/ingredients/grenadine.png';
+import mintImage from '../assets/images/ingredients/mint.png';
+import clubSodaImage from '../assets/images/ingredients/club-soda.png';
+import tonicWaterImage from '../assets/images/ingredients/tonic-water.png';
+import colaImage from '../assets/images/ingredients/cola.png';
+import gingerBeerImage from '../assets/images/ingredients/ginger-beer.png';
+import cranberryJuiceImage from '../assets/images/ingredients/cranberry.png';
+import pineappleJuiceImage from '../assets/images/ingredients/pineapple.png';
+import coconutCreamImage from '../assets/images/ingredients/coconut.png';
 
 
 // mock data with fixed image paths
@@ -79,29 +87,81 @@ const MOCK_INGREDIENTS = [
         image: grenadineImage
     },
     {
-        id: 'bitters',
-        name: 'Angostura Bitters',
-        description: 'Concentrated botanical infusion that adds complexity.',
-        type: 'Bitters',
-        alcohol_content: 44,
-        image_url: '../assets/images/ingredients/bitters.png'
-    },
-    {
         id: 'mint',
         name: 'Fresh Mint',
         description: 'Aromatic herb used in many cocktails like Mojitos.',
         type: 'Herb',
         alcohol_content: 0,
-        image_url: '../assets/images/ingredients/mint.png'
+        image: mintImage
+    },
+    {
+        id: 'club-soda',
+        name: 'Club Soda',
+        description: 'Carbonated water used to add fizz to cocktails.',
+        type: 'Mixer',
+        alcohol_content: 0,
+        image: clubSodaImage
+    },
+    {
+        id: 'tonic-water',
+        name: 'Tonic Water',
+        description: 'Carbonated soft drink with quinine, often paired with gin.',
+        type: 'Mixer',
+        alcohol_content: 0,
+        image: tonicWaterImage
+    },
+    {
+        id: 'cola',
+        name: 'Cola',
+        description: 'Sweet, dark soda that pairs well with rum and whiskey.',
+        type: 'Mixer',
+        alcohol_content: 0,
+        image: colaImage
+    },
+    {
+        id: 'ginger-beer',
+        name: 'Ginger Beer',
+        description: 'Spicy, non-alcoholic soda made from ginger root.',
+        type: 'Mixer',
+        alcohol_content: 0,
+        image: gingerBeerImage
+    },
+    {
+        id: 'cranberry-juice',
+        name: 'Cranberry Juice',
+        description: 'Tart juice made from cranberries, great in vodka-based drinks.',
+        type: 'Juice',
+        alcohol_content: 0,
+        image: cranberryJuiceImage
+    },
+    {
+        id: 'pineapple-juice',
+        name: 'Pineapple Juice',
+        description: 'Tropical fruit juice with a sweet and tart flavor.',
+        type: 'Juice',
+        alcohol_content: 0,
+        image: pineappleJuiceImage
+    },
+    {
+        id: 'coconut-cream',
+        name: 'Coconut Cream',
+        description: 'Rich, sweet cream made from coconut, used in tropical cocktails.',
+        type: 'Dairy Substitute',
+        alcohol_content: 0,
+        image: coconutCreamImage
     }
 ];
 
-const IngredientsSearchPage = () => {
+const IngredientsSearchPage = ({ 
+    barItems, 
+    setBarItems, 
+    isBarOpen, 
+    setIsBarOpen,
+    onGenerateDrinks 
+}) => {
     const [ingredients, setIngredients] = useState([]);
     const [filteredIngredients, setFilteredIngredients] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [barItems, setBarItems] = useState([]);
-    const [isBarOpen, setIsBarOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState('all');
 
     // Load ingredients (mock data for now)
@@ -110,17 +170,19 @@ const IngredientsSearchPage = () => {
         setFilteredIngredients(MOCK_INGREDIENTS);
     }, []);
 
-    // Load bar from localStorage on initial render
+    // Load bar from localStorage on initial render if barItems is empty
     useEffect(() => {
-        const savedbar = localStorage.getItem('ingredientbar');
-        if (savedbar) {
-            setBarItems(JSON.parse(savedbar));
+        if (barItems.length === 0) {
+            const savedBar = localStorage.getItem('ingredientBar');
+            if (savedBar) {
+                setBarItems(JSON.parse(savedBar));
+            }
         }
     }, []);
 
     // Save bar to localStorage whenever it changes
     useEffect(() => {
-        localStorage.setItem('ingredientbar', JSON.stringify(barItems));
+        localStorage.setItem('ingredientBar', JSON.stringify(barItems));
     }, [barItems]);
 
     // search and filtering
@@ -143,16 +205,11 @@ const IngredientsSearchPage = () => {
         setFilteredIngredients(results);
     }, [searchTerm, ingredients, activeFilter]);
 
-    const handleAddTobar = (ingredient) => {
+    const handleAddToBar = (ingredient) => {
         // Check if already in bar by ID
         if (!barItems.some(item => item.id === ingredient.id)) {
             const newBarItems = [...barItems, ingredient];
             setBarItems(newBarItems);
-
-            // Show bar feedback
-            setIsBarOpen(true);
-            // Auto-hide bar after 2 seconds
-            setTimeout(() => setIsBarOpen(false), 2000);
         } else {
             // Provide feedback that item is already in bar
             alert(`${ingredient.name} is already in your bar`);
@@ -246,21 +303,12 @@ const IngredientsSearchPage = () => {
                 )}
             </div>
 
-            <div
-                className={`bar-status ${barItems.length > 0 ? 'has-items' : ''}`}
-                onClick={() => setIsBarOpen(true)}
-            >
-                <span className="bar-icon">🛒</span>
-                {barItems.length > 0 && (
-                    <span className="bar-count">{barItems.length}</span>
-                )}
-            </div>
-
             <Bar
                 barItems={barItems}
                 onRemoveItem={handleRemoveFromBar}
                 isOpen={isBarOpen}
                 onClose={() => setIsBarOpen(false)}
+                onGenerateDrinks={onGenerateDrinks}
             />
         </div>
     );

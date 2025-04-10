@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Bar.css';
 
-const Bar = ({ barItems, onRemoveItem, isOpen, onClose }) => {
+const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
     const navigate = useNavigate();
 
     if (!isOpen) return null;
@@ -31,7 +31,7 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose }) => {
         }}>
             <div className="bar">
                 <div className="bar-header">
-                    <h2>Your Ingredients</h2>
+                    <h2>Your Bar ({totalItems})</h2>
                     <button className="close-bar-button" onClick={onClose}>×</button>
                 </div>
 
@@ -43,30 +43,34 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose }) => {
                 ) : (
                     <>
                         <div className="bar-items">
-                            {bar.map(item => (
-                                <div key={item.id} className="bar-item">
-                                    <img
-                                        src={item.image || '/images/ingredients/default.jpg'}
-                                        alt={item.name}
-                                        className="bar-item-image"
-                                        onError={(e) => {
-                                            // Fallback if image fails to load
-                                            e.target.src = '/images/ingredients/default.jpg';
-                                            console.log("Image failed to load:", item.image_url);
-                                        }}
-                                    />
-                                    <div className="bar-item-details">
-                                        <h3>{item.name}</h3>
-                                        <span className="bar-item-type">{item.type}</span>
-                                    </div>
-                                    <button
-                                        className="remove-item-button"
-                                        onClick={() => onRemoveItem(item.id)}
-                                    >
-                                        Remove
-                                    </button>
-                                </div>
-                            ))}
+                            <ul className="bar-items">
+                                {barItems.map(item => (
+                                    <li key={item.id} className="bar-item">
+                                        <div className="bar-item-info">
+                                            <img
+                                                src={item.image || '/images/ingredients/default.jpg'}
+                                                alt={item.name}
+                                                className="bar-item-image"
+                                                onError={(e) => {
+                                                    // Fallback if image fails to load
+                                                    e.target.src = '/images/ingredients/default.jpg';
+                                                    console.log("Image failed to load:", item.image_url);
+                                                }}
+                                            />
+                                            <div className="bar-item-details">
+                                                <h3>{item.name}</h3>
+                                                <span className="bar-item-type">{item.type}</span>
+                                            </div>
+                                        </div>
+                                        <button
+                                            className="remove-item"
+                                            onClick={() => onRemoveItem(item.id)}
+                                        >
+                                            ×
+                                        </button>
+                                    </li>
+                                ))}
+                            </ul>
                         </div>
 
                         <div className="bar-footer">
@@ -79,6 +83,16 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose }) => {
                             >
                                 Find Drinks With These
                             </button>
+                            <button
+                                className="generate-drinks-button"
+                                onClick={onGenerateDrinks}
+                                disabled={totalItems < 2}
+                            >
+                                Generate Drinks
+                            </button>
+                            {totalItems < 2 && (
+                                <p className="minimum-notice">Add at least 2 ingredients to generate drinks</p>
+                            )}
                         </div>
                     </>
                 )}

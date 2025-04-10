@@ -73,11 +73,21 @@
 
 .filter-tab:hover {
   background-color: rgba(255, 242, 198, 0.1);
+  background-color: var(--secondary-color);
+  color: var(--background-color);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .filter-tab.active {
   background-color: var(--accent-color);
   color: var(--background-color);
+}
+
+.filter-tab.active:hover {
+  background-color: var(--accent-dark);
+  color: white;
+  
 }
 
 .ingredients-grid {

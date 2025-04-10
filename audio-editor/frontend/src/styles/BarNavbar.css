@@ -83,7 +83,6 @@
 .logo-image {
   height: 40px;
   width: auto;
-  max-width: 150px;
   display: block;
   object-fit: contain;
   vertical-align: middle;
