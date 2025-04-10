@@ -40,7 +40,7 @@
   padding: 12px 20px;
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgb(232, 39, 39);
   color: var(--text-color);
   font-size: 16px;
   transition: all 0.3s ease;
@@ -48,7 +48,7 @@
 
 .search-input:focus {
   outline: none;
-  border-color: var(--primary-color);
+  border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(255, 242, 198, 0.3);
 }
 
@@ -65,7 +65,7 @@
   border-radius: 25px;
   border: 1px solid var(--primary-color);
   background-color: transparent;
-  color: var(--primary-color);
+  color: #080707;
   font-size: 13px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -76,7 +76,7 @@
 }
 
 .filter-tab.active {
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   color: var(--background-color);
 }
 
@@ -98,7 +98,7 @@
   border-radius: 10px;
 }
 
-.cart-status {
+.bar-status {
   position: fixed;
   bottom: 25px;
   right: 25px;
@@ -115,12 +115,12 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cart-status:hover {
+.bar-status:hover {
   transform: scale(1.1);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-.cart-status.has-items {
+.bar-status.has-items {
   animation: pulse 1.5s ease-out;
 }
 
@@ -132,11 +132,11 @@
   80% { transform: scale(1); }
 }
 
-.cart-icon {
+.bar-icon {
   font-size: 24px;
 }
 
-.cart-count {
+.bar-count {
   position: absolute;
   top: -5px;
   right: -5px;

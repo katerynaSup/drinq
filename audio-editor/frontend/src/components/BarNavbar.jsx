@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/BarNavbar.css';
-import logoImage from '../../public/images/logo/drinq_transparent_cropped.png';
+import logoImage from '../assets/images/logo.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGlassWhiskey, faWineBottle, faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 
-const BarNavbar = ({ cartItemCount = 0, onCartClick }) => {
+
+const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
     return (
         <div className="bar-navbar">
             <div className="navbar-inner">
@@ -17,12 +20,12 @@ const BarNavbar = ({ cartItemCount = 0, onCartClick }) => {
                     <Link to="/preferences" className="nav-link">Find Drinks</Link>
                     <Link to="/ingredients" className="nav-link">By Ingredient</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
-                    <button className="cart-button" onClick={onCartClick}>
-                        <span className="cart-icon">🛒</span>
-                        {cartItemCount > 0 && (
-                            <span className="cart-count">{cartItemCount}</span>
+                    <button className="bar-button" onClick={onBarClick}>
+                        <span className="bar-icon">🥃</span>
+                        {barItemCount > 0 && (
+                            <span className="bar-count">{barItemCount}</span>
                         )}
-                        Cart
+                        Bar
                     </button>
                 </div>
             </div>

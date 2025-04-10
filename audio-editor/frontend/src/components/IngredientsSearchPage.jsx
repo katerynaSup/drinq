@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import IngredientCard from './IngredientCard';
-import ShoppingCart from './ShoppingCart';
+import Bar from './Bar';
 import '../styles/IngredientsSearchPage.css';
 import vodkaImage from '../assets/images/ingredients/vodka.png';
+import rumImage from '../assets/images/ingredients/rum.png';
+import ginImage from '../assets/images/ingredients/gin.png';
+import tequilaImage from '../assets/images/ingredients/tequila.png';
+import orangeJuiceImage from '../assets/images/ingredients/orange-juice.png';
+import limeJuiceImage from '../assets/images/ingredients/lime.png';
+import simpleSyrupImage from '../assets/images/ingredients/simple-syrup.png';
+import grenadineImage from '../assets/images/ingredients/grenadine.png';
+
 
 // mock data with fixed image paths
 const MOCK_INGREDIENTS = [
@@ -12,7 +20,7 @@ const MOCK_INGREDIENTS = [
         description: 'A clear distilled alcoholic beverage that originated in Eastern Europe.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: vodkaImage
+        image: vodkaImage
     },
     {
         id: 'rum',
@@ -20,7 +28,7 @@ const MOCK_INGREDIENTS = [
         description: 'A distilled alcoholic drink made by fermenting and then distilling sugarcane.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../assets/images/ingredients/rum.png'
+        image: rumImage
     },
     {
         id: 'gin',
@@ -28,7 +36,7 @@ const MOCK_INGREDIENTS = [
         description: 'A distilled alcoholic drink that derives its flavor from juniper berries.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../assets/images/ingredients/gin.png'
+        image: ginImage
     },
     {
         id: 'tequila',
@@ -36,7 +44,7 @@ const MOCK_INGREDIENTS = [
         description: 'A distilled beverage made from the blue agave plant in Mexico.',
         type: 'Spirit',
         alcohol_content: 40,
-        image_url: '../assets/images/ingredients/tequila.png'
+        image: tequilaImage
     },
     {
         id: 'orange-juice',
@@ -44,7 +52,7 @@ const MOCK_INGREDIENTS = [
         description: 'Fresh squeezed juice from oranges, adds a bright citrus flavor.',
         type: 'Juice',
         alcohol_content: 0,
-        image_url: '../assets/images/ingredients/orange-juice.png'
+        image: orangeJuiceImage
     },
     {
         id: 'lime-juice',
@@ -52,7 +60,7 @@ const MOCK_INGREDIENTS = [
         description: 'Tart citrus juice that adds brightness to cocktails.',
         type: 'Juice',
         alcohol_content: 0,
-        image_url: '../assets/images/ingredients/lime-juice.png'
+        image: limeJuiceImage
     },
     {
         id: 'simple-syrup',
@@ -60,7 +68,7 @@ const MOCK_INGREDIENTS = [
         description: 'Equal parts sugar and water, used to sweeten cocktails.',
         type: 'Syrup',
         alcohol_content: 0,
-        image_url: '../assets/images/ingredients/simple-syrup.png'
+        image: simpleSyrupImage
     },
     {
         id: 'grenadine',
@@ -68,7 +76,7 @@ const MOCK_INGREDIENTS = [
         description: 'Sweet, tart syrup made from pomegranate juice.',
         type: 'Syrup',
         alcohol_content: 0,
-        image_url: '../assets/images/ingredients/grenadine.png'
+        image: grenadineImage
     },
     {
         id: 'bitters',
@@ -92,8 +100,8 @@ const IngredientsSearchPage = () => {
     const [ingredients, setIngredients] = useState([]);
     const [filteredIngredients, setFilteredIngredients] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
-    const [cartItems, setCartItems] = useState([]);
-    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [barItems, setBarItems] = useState([]);
+    const [isBarOpen, setIsBarOpen] = useState(false);
     const [activeFilter, setActiveFilter] = useState('all');
 
     // Load ingredients (mock data for now)
@@ -102,18 +110,18 @@ const IngredientsSearchPage = () => {
         setFilteredIngredients(MOCK_INGREDIENTS);
     }, []);
 
-    // Load cart from localStorage on initial render
+    // Load bar from localStorage on initial render
     useEffect(() => {
-        const savedCart = localStorage.getItem('ingredientCart');
-        if (savedCart) {
-            setCartItems(JSON.parse(savedCart));
+        const savedbar = localStorage.getItem('ingredientbar');
+        if (savedbar) {
+            setBarItems(JSON.parse(savedbar));
         }
     }, []);
 
-    // Save cart to localStorage whenever it changes
+    // Save bar to localStorage whenever it changes
     useEffect(() => {
-        localStorage.setItem('ingredientCart', JSON.stringify(cartItems));
-    }, [cartItems]);
+        localStorage.setItem('ingredientbar', JSON.stringify(barItems));
+    }, [barItems]);
 
     // search and filtering
     useEffect(() => {
@@ -135,24 +143,24 @@ const IngredientsSearchPage = () => {
         setFilteredIngredients(results);
     }, [searchTerm, ingredients, activeFilter]);
 
-    const handleAddToCart = (ingredient) => {
-        // Check if already in cart by ID
-        if (!cartItems.some(item => item.id === ingredient.id)) {
-            const newCartItems = [...cartItems, ingredient];
-            setCartItems(newCartItems);
+    const handleAddTobar = (ingredient) => {
+        // Check if already in bar by ID
+        if (!barItems.some(item => item.id === ingredient.id)) {
+            const newBarItems = [...barItems, ingredient];
+            setBarItems(newBarItems);
 
-            // Show cart feedback
-            setIsCartOpen(true);
-            // Auto-hide cart after 2 seconds
-            setTimeout(() => setIsCartOpen(false), 2000);
+            // Show bar feedback
+            setIsBarOpen(true);
+            // Auto-hide bar after 2 seconds
+            setTimeout(() => setIsBarOpen(false), 2000);
         } else {
-            // Provide feedback that item is already in cart
-            alert(`${ingredient.name} is already in your cart`);
+            // Provide feedback that item is already in bar
+            alert(`${ingredient.name} is already in your bar`);
         }
     };
 
-    const handleRemoveFromCart = (ingredientId) => {
-        setCartItems(cartItems.filter(item => item.id !== ingredientId));
+    const handleRemoveFromBar = (ingredientId) => {
+        setBarItems(barItems.filter(item => item.id !== ingredientId));
     };
 
     return (
@@ -209,16 +217,24 @@ const IngredientsSearchPage = () => {
                 {filteredIngredients.length > 0 ? (
                     filteredIngredients.map(ingredient => (
                         <div key={ingredient.id} className="card">
-                            <img src={ingredient.image} alt={ingredient.name} className="card-image" />
+                            < img
+                                src={ingredient.image}
+                                alt={ingredient.name}
+                                className="card-image"
+                                onError={(e) => {
+                                    console.error(`Failed to load image for ${ingredient.name}:`, ingredient.image);
+                                    e.target.src = '/images/ingredients/default.jpg'; // Fallback image
+                                }}
+                            />
                             <div className="card-content">
-                                <h2>{ingredient.name}</h2>
-                                <p>{ingredient.type}</p>
+                                <h2 className="body-text">{ingredient.name}</h2>
+                                <p className="ingredient-type">{ingredient.type}</p>
                                 <button
-                                    onClick={() => handleAddToCart(ingredient)}
+                                    onClick={() => handleAddToBar(ingredient)}
                                     className="button primary-button"
-                                    disabled={cartItems.some(item => item.id === ingredient.id)}
+                                    disabled={barItems.some(item => item.id === ingredient.id)}
                                 >
-                                    {cartItems.some(item => item.id === ingredient.id) ? 'Added' : 'Add to Cart'}
+                                    {barItems.some(item => item.id === ingredient.id) ? 'Added' : 'Add to Bar'}
                                 </button>
                             </div>
                         </div>
@@ -231,20 +247,20 @@ const IngredientsSearchPage = () => {
             </div>
 
             <div
-                className={`cart-status ${cartItems.length > 0 ? 'has-items' : ''}`}
-                onClick={() => setIsCartOpen(true)}
+                className={`bar-status ${barItems.length > 0 ? 'has-items' : ''}`}
+                onClick={() => setIsBarOpen(true)}
             >
-                <span className="cart-icon">🛒</span>
-                {cartItems.length > 0 && (
-                    <span className="cart-count">{cartItems.length}</span>
+                <span className="bar-icon">🛒</span>
+                {barItems.length > 0 && (
+                    <span className="bar-count">{barItems.length}</span>
                 )}
             </div>
 
-            <ShoppingCart
-                cartItems={cartItems}
-                onRemoveItem={handleRemoveFromCart}
-                isOpen={isCartOpen}
-                onClose={() => setIsCartOpen(false)}
+            <Bar
+                barItems={barItems}
+                onRemoveItem={handleRemoveFromBar}
+                isOpen={isBarOpen}
+                onClose={() => setIsBarOpen(false)}
             />
         </div>
     );

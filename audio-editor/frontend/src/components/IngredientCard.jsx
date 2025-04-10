@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/IngredientCard.css';
 
-const IngredientCard = ({ ingredient, onAddToCart }) => {
+const IngredientCard = ({ ingredient, onAddToBar }) => {
     return (
         <div className="ingredient-card">
             <div className="ingredient-image-container">
@@ -26,10 +26,10 @@ const IngredientCard = ({ ingredient, onAddToCart }) => {
                     </span>
                 </div>
                 <button
-                    className="add-to-cart-button"
-                    onClick={() => onAddToCart(ingredient)}
+                    className="add-to-bar-button"
+                    onClick={() => onAddToBar(ingredient)}
                 >
-                    Add to Cart
+                    Add to Bar
                 </button>
             </div>
         </div>
