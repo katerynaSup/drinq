@@ -2,23 +2,56 @@
 from typing import List, Dict, Any
 import json
 from pathlib import Path
-from models.drink import Drink
+from models.drink import Drink, Ingredient
+import os
 
 class DrinkRecommender:
     def __init__(self):
         self.drinks = self._load_drinks()
     
-    def _load_drinks(self) -> List[Drink]:
-        """Load drinks from the JSON database"""
-        data_file = Path(__file__).parent.parent / "data" / "drinks.json"
-        with open(data_file, "r") as f:
-            drinks_data = json.load(f)
-        
-        # Handle empty file case
-        if not drinks_data:
-            return []
+    def _load_drinks(self):
+        """Load drinks from JSON file"""
+        try:
+            # Updated path to match the new location in frontend
+            data_file = Path(__file__).parent.parent.parent / "frontend" / "src" / "data" / "drinks.json"
             
-        return [Drink(**drink) for drink in drinks_data]
+            with open(data_file, "r") as f:
+                drinks_data = json.load(f)
+            
+            # Convert JSON data to Drink objects
+            drinks = []
+            for drink_dict in drinks_data:
+                # Create a Drink object and populate it with data from the JSON
+                # Adapt this part based on your Drink model structure
+                ingredients = []
+                for ing in drink_dict.get("ingredients", []):
+                    ingredients.append(Ingredient(
+                        id=ing.get("id", ""),
+                        amount=ing.get("amount", ""),
+                        unit=ing.get("unit", "")
+                    ))
+                
+                drink = Drink(
+                    id=drink_dict.get("id", ""),
+                    name=drink_dict.get("name", ""),
+                    description=drink_dict.get("description", ""),
+                    ingredients=ingredients,
+                    instructions=drink_dict.get("method", "").split(". "),
+                    glass_type=drink_dict.get("glass", ""),
+                    image_url=drink_dict.get("image_url", ""),
+                    tags=drink_dict.get("tags", []),
+                    flavor_profile=drink_dict.get("flavor_profile", []),
+                    base_spirit=next((ing["id"] for ing in drink_dict.get("ingredients", []) 
+                                   if ing["id"] in ["vodka", "rum", "gin", "tequila", "whiskey"]), "other"),
+                    difficulty=drink_dict.get("difficulty", 1),
+                    prep_time_minutes=drink_dict.get("prep_time_minutes", 5)
+                )
+                drinks.append(drink)
+            
+            return drinks
+        except Exception as e:
+            print(f"Error loading drinks: {str(e)}")
+            return []
     
     def recommend(self, preferences: Dict[str, Any], limit: int = 5) -> List[Drink]:
         """Generate drink recommendations based on user preferences"""

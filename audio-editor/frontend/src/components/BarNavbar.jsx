@@ -1,10 +1,9 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import '../styles/BarNavbar.css';
-import logoImage from '../assets/images/logo.png';
+import logoImage from '../../public/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlassWhiskey, faWineBottle, faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
-
 
 const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
     return (
@@ -12,7 +11,7 @@ const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
             <div className="navbar-inner">
                 <div className="bar-logo">
                     <Link to="/">
-                        <img src={logoImage} className="logo-image" alt="Bar Drink Explorer"/>
+                        <img src={logoImage} className="logo-image" alt="Bar Drink Explorer" />
                     </Link>
                 </div>
                 <div className="navbar-links">
@@ -20,6 +19,11 @@ const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
                     <Link to="/preferences" className="nav-link">Find Drinks</Link>
                     <Link to="/ingredients" className="nav-link">By Ingredient</Link>
                     <Link to="/explore" className="nav-link">Explore</Link>
+                    <li className="nav-item">
+                        <NavLink to="/drinks" className="nav-link" >
+                            Drinks
+                        </NavLink>
+                    </li>
                     <button className="bar-button" onClick={onBarClick}>
                         <span className="bar-icon">🥃</span>
                         {barItemCount > 0 && (

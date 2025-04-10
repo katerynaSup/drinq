@@ -1,6 +1,7 @@
 import React from 'react';
 import IngredientSubstitution from './IngredientSubstitution';
 
+
 const DrinkCard = ({ drink }) => {
     return (
         <div className="drink-card">

@@ -1,0 +1,33 @@
+[
+  {
+    "id": "cosmopolitan",
+    "name": "Cosmopolitan",
+    "description": "A stylish vodka-based cocktail with cranberry, lime, and orange flavors.",
+    "glass": "Cocktail glass",
+    "method": "Shake all ingredients with ice and strain into a chilled cocktail glass.",
+    "ingredients": [
+      { "id": "vodka", "amount": "1.5 oz" },
+      { "id": "triple-sec", "amount": "1 oz" },
+      { "id": "lime-juice", "amount": "0.5 oz" },
+      { "id": "cranberry-juice", "amount": "1 oz" }
+    ],
+    "alcohol_content": 20,
+    "image_url": "/images/drinks/cosmopolitan.jpg"
+  },
+  {
+    "id": "mojito",
+    "name": "Mojito",
+    "description": "A refreshing Cuban cocktail made with rum, lime, mint, and soda.",
+    "glass": "Highball glass",
+    "method": "Muddle mint and lime juice, add rum and ice, top with soda.",
+    "ingredients": [
+      { "id": "rum", "amount": "2 oz" },
+      { "id": "lime-juice", "amount": "1 oz" },
+      { "id": "simple-syrup", "amount": "0.5 oz" },
+      { "id": "mint", "amount": "6 leaves" },
+      { "id": "club-soda", "amount": "Top up" }
+    ],
+    "alcohol_content": 10,
+    "image_url": "/images/drinks/mojito.jpg"
+  }
+] 

@@ -5,6 +5,8 @@ import PreferenceForm from './components/PreferenceForm';
 import BarNavbar from './components/BarNavbar';
 import IngredientsSearchPage from './components/IngredientsSearchPage';
 import IngredientRecommendationsPage from './components/IngredientRecommendationsPage';
+import DrinksPage from './components/DrinksPage';
+import DrinkDetailPage from './components/DrinkDetailPage';
 
 // Placeholder components - you'll create these later
 const HomePage = () => {
@@ -81,7 +83,7 @@ function App() {
     const [recommendations, setRecommendations] = useState([]);
     const [barItems, setBarItems] = useState([]);
     const [isBarOpen, setIsBarOpen] = useState(false);
-    
+
     const handlePreferenceSubmit = async (preferences) => {
         try {
             const response = await fetch('/api/recommendations', {
@@ -120,9 +122,9 @@ function App() {
     return (
         <Router>
             <div className="app-container">
-                <BarNavbar 
-                    barItemCount={barItems.length} 
-                    onBarClick={handleBarClick} 
+                <BarNavbar
+                    barItemCount={barItems.length}
+                    onBarClick={handleBarClick}
                 />
                 <main className="main-content">
                     <Routes>
@@ -135,20 +137,21 @@ function App() {
                             path="/recommendations"
                             element={<RecommendationsPage recommendations={recommendations} />}
                         />
-                        <Route 
-                            path="/ingredients" 
+                        <Route
+                            path="/ingredients"
                             element={
-                                <IngredientsSearchPage 
+                                <IngredientsSearchPage
                                     barItems={barItems}
                                     setBarItems={setBarItems}
                                     isBarOpen={isBarOpen}
                                     setIsBarOpen={setIsBarOpen}
                                     onGenerateDrinks={handleGenerateDrinks}
                                 />
-                            } 
+                            }
                         />
                         <Route path="/explore" element={<div className="page-container">Explore Drinks (Coming Soon)</div>} />
-                        <Route path="/drinks/:id" element={<div className="page-container">Individual Drink Detail (Coming Soon)</div>} />
+                        <Route path="/drinks" element={<DrinksPage />} />
+                        <Route path="/drinks/:id" element={<DrinkDetailPage />} />
                         <Route path="/ingredient-recommendations" element={<IngredientRecommendationsPage />} />
                     </Routes>
                 </main>

@@ -1,18 +1,18 @@
 import React from 'react';
 import '../styles/IngredientCard.css';
+import defaultImage from '../../public/images/logo.png';
 
 const IngredientCard = ({ ingredient, onAddToBar }) => {
     return (
         <div className="ingredient-card">
             <div className="ingredient-image-container">
                 <img
-                    src={ingredient.image_url || '/images/ingredients/default.jpg'}
+                    src={ingredient.image}
                     alt={ingredient.name}
                     className="ingredient-image"
                     onError={(e) => {
-                        // Fallback if image fails to load
-                        e.target.src = '/images/ingredients/default.jpg';
-                        console.error("Failed to load image:", ingredient.image_url);
+                        console.warn(`Failed to load image for ${ingredient.name}`);
+                        e.target.src = defaultImage; // Fallback image
                     }}
                 />
             </div>
