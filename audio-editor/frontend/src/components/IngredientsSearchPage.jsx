@@ -152,12 +152,12 @@ const MOCK_INGREDIENTS = [
     }
 ];
 
-const IngredientsSearchPage = ({ 
-    barItems, 
-    setBarItems, 
-    isBarOpen, 
+const IngredientsSearchPage = ({
+    barItems,
+    setBarItems,
+    isBarOpen,
     setIsBarOpen,
-    onGenerateDrinks 
+    onGenerateDrinks
 }) => {
     const [ingredients, setIngredients] = useState([]);
     const [filteredIngredients, setFilteredIngredients] = useState([]);
