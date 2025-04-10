@@ -362,17 +362,17 @@ const MOCK_INGREDIENTS = [
         image: greenTeaImage
     },
     {
-        id: 'soju',
+        id: 'soju-1',
         name: 'Soju',
-        description: 'A clear, low-alcohol Korean spirit traditionally made from rice or sweet potatoes.',
+        description: 'Korean clear spirit typically made from rice or other grains.',
         type: 'Spirit',
         alcohol_content: 20,
         image: sojuImage
     },
     {
-        id: 'bacardi',
-        name: 'Bacardi',
-        description: 'A popular brand of white rum with light, crisp notes, great for classic cocktails.',
+        id: 'bacardi-1',
+        name: 'Bacardi Rum',
+        description: 'Popular white rum brand, used in many classic cocktails.',
         type: 'Spirit',
         alcohol_content: 40,
         image: bacardiImage
@@ -418,11 +418,11 @@ const MOCK_INGREDIENTS = [
         image: sourMixImage
     },
     {
-        id: 'orange-bitters',
+        id: 'orange-bitters-1',
         name: 'Orange Bitters',
-        description: 'Highly concentrated flavoring with citrus and spice notes, used in small dashes.',
+        description: 'Concentrated flavoring made from orange peels, adds depth and complexity.',
         type: 'Bitters',
-        alcohol_content: 45,
+        alcohol_content: 35,
         image: orangeBittersImage
     },
     {
@@ -434,91 +434,11 @@ const MOCK_INGREDIENTS = [
         image: sparklingWaterImage
     },
     {
-        id: 'cherry-liqueur',
+        id: 'cherry-liqueur-1',
         name: 'Cherry Liqueur',
-        description: 'A sweet, deep red liqueur made from cherries, often used in tiki drinks and desserts.',
+        description: 'Sweet liqueur made from cherries, adds fruity flavor to cocktails.',
         type: 'Liqueur',
-        alcohol_content: 30,
-        image: cherryLiqueurImage
-    },
-    {
-        id: 'soju',
-        name: 'Soju',
-        description: 'A clear, low-alcohol Korean spirit traditionally made from rice or sweet potatoes.',
-        type: 'Spirit',
-        alcohol_content: 20,
-        image: sojuImage
-    },
-    {
-        id: 'bacardi',
-        name: 'Bacardi',
-        description: 'A popular brand of white rum with light, crisp notes, great for classic cocktails.',
-        type: 'Spirit',
-        alcohol_content: 40,
-        image: bacardiImage
-    },
-    {
-        id: 'coconut-syrup',
-        name: 'Coconut Syrup',
-        description: 'Sweet syrup made from coconut, adds a creamy, tropical flavor.',
-        type: 'Syrup',
-        alcohol_content: 0,
-        image: coconutSyrupImage
-    },
-    {
-        id: 'coconut-rum',
-        name: 'Coconut Rum',
-        description: 'A rum infused with natural coconut flavor, used in tropical cocktails.',
-        type: 'Spirit',
-        alcohol_content: 21,
-        image: coconutRumImage
-    },
-    {
-        id: 'aperol',
-        name: 'Aperol',
-        description: 'An Italian apéritif with a bittersweet orange flavor and low alcohol content.',
-        type: 'Liqueur',
-        alcohol_content: 11,
-        image: aperolImage
-    },
-    {
-        id: 'cinnamon-syrup',
-        name: 'Cinnamon Syrup',
-        description: 'Sweet and cuspicy syrup made with cinnamon sticks, adds warmth to drinks.',
-        type: 'Syrup',
-        alcohol_content: 0,
-        image: cinnamonSyrupImage
-    },
-    {
-        id: 'sour-mix',
-        name: 'Sour Mix',
-        description: 'A premade blend of lemon or lime juice and sugar, used in sours and margaritas.',
-        type: 'Mixer',
-        alcohol_content: 0,
-        image: sourMixImage
-    },
-    {
-        id: 'orange-bitters',
-        name: 'Orange Bitters',
-        description: 'Highly concentrated flavoring with citrus and spice notes, used in small dashes.',
-        type: 'Bitters',
-        alcohol_content: 45,
-        image: orangeBittersImage
-    },
-    {
-        id: 'sparkling-water',
-        name: 'Sparkling Water',
-        description: 'Plain carbonated water used to lighten and freshen up cocktails.',
-        type: 'Mixer',
-        alcohol_content: 0,
-        image: sparklingWaterImage
-    },
-    {
-        id: 'cherry-liqueur',
-        name: 'Cherry Liqueur',
-        description: 'A sweet, deep red liqueur made from cherries, often used in tiki drinks and desserts.',
-        type: 'Liqueur',
-        alcohol_content: 30,
+        alcohol_content: 25,
         image: cherryLiqueurImage
     },
     {
@@ -633,8 +553,28 @@ const IngredientsSearchPage = ({
 
     // Load ingredients (mock data for now)
     useEffect(() => {
-        setIngredients(MOCK_INGREDIENTS);
-        setFilteredIngredients(MOCK_INGREDIENTS);
+        // Create a map to check for duplicates
+        const idCounts = {};
+
+        // Fix duplicate IDs in the mock data
+        const uniqueIngredients = MOCK_INGREDIENTS.map((ingredient, index) => {
+            // Count occurrences of each ID
+            idCounts[ingredient.id] = (idCounts[ingredient.id] || 0) + 1;
+
+            // If this is a duplicate (not the first occurrence), create a unique ID
+            if (idCounts[ingredient.id] > 1) {
+                console.log(`Fixed duplicate ID: ${ingredient.id}`);
+                return {
+                    ...ingredient,
+                    id: `${ingredient.id}-${idCounts[ingredient.id]}` // Append a counter
+                };
+            }
+
+            return ingredient;
+        });
+
+        setIngredients(uniqueIngredients);
+        setFilteredIngredients(uniqueIngredients);
     }, []);
 
     // Load bar from localStorage on initial render if barItems is empty
@@ -647,7 +587,7 @@ const IngredientsSearchPage = ({
         }
     }, []);
 
-    // Save bar to localStorage whenever it changes
+    // save bar to localStorage whenever it changes
     useEffect(() => {
         localStorage.setItem('ingredientBar', JSON.stringify(barItems));
     }, [barItems]);
@@ -656,16 +596,27 @@ const IngredientsSearchPage = ({
     useEffect(() => {
         let results = ingredients;
 
-        // type filter
-        if (activeFilter !== 'all') {
-            results = results.filter(ing => ing.type.toLowerCase() === activeFilter.toLowerCase());
+        // type filter with more precise matching for spirits
+        if (activeFilter.toLowerCase() !== 'all') {
+            if (activeFilter.toLowerCase() === 'spirit') {
+                results = results.filter(ingredient => {
+                    return ingredient.type &&
+                        ingredient.type.toLowerCase() === 'spirit' &&
+                        ingredient.alcohol_content >= 20;
+                });
+                console.log(results);
+            } else {
+                results = results.filter(ingredient =>
+                    ingredient.type && ingredient.type.toLowerCase() === activeFilter.toLowerCase()
+                );
+            }
         }
 
-        //  search term
+        // search term filtering remains the same
         if (searchTerm) {
-            results = results.filter(ing =>
-                ing.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                ing.description.toLowerCase().includes(searchTerm.toLowerCase())
+            results = results.filter(ingredient =>
+                ingredient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                ingredient.description.toLowerCase().includes(searchTerm.toLowerCase())
             );
         }
 
@@ -673,12 +624,11 @@ const IngredientsSearchPage = ({
     }, [searchTerm, ingredients, activeFilter]);
 
     const handleAddToBar = (ingredient) => {
-        // Check if already in bar by ID
+        // check if already in bar by ID
         if (!barItems.some(item => item.id === ingredient.id)) {
             const newBarItems = [...barItems, ingredient];
             setBarItems(newBarItems);
         } else {
-            // Provide feedback that item is already in bar
             alert(`${ingredient.name} is already in your bar`);
         }
     };
@@ -706,31 +656,31 @@ const IngredientsSearchPage = ({
 
             <div className="filter-tabs">
                 <button
-                    className={`button ${activeFilter === 'all' ? 'primary-button' : 'secondary-button'}`}
+                    className={`button ${activeFilter.toLowerCase() === 'all' ? 'primary-button' : 'secondary-button'}`}
                     onClick={() => setActiveFilter('all')}
                 >
                     All
                 </button>
                 <button
-                    className={`button ${activeFilter === 'spirit' ? 'primary-button' : 'secondary-button'} button-border`}
+                    className={`button ${activeFilter.toLowerCase() === 'spirit' ? 'primary-button' : 'secondary-button'} button-border`}
                     onClick={() => setActiveFilter('spirit')}
                 >
                     Spirits
                 </button>
                 <button
-                    className={`button ${activeFilter === 'juice' ? 'primary-button' : 'secondary-button'}`}
+                    className={`button ${activeFilter.toLowerCase() === 'juice' ? 'primary-button' : 'secondary-button'}`}
                     onClick={() => setActiveFilter('juice')}
                 >
                     Juices
                 </button>
                 <button
-                    className={`button ${activeFilter === 'syrup' ? 'primary-button' : 'secondary-button'}`}
+                    className={`button ${activeFilter.toLowerCase() === 'syrup' ? 'primary-button' : 'secondary-button'}`}
                     onClick={() => setActiveFilter('syrup')}
                 >
                     Syrups
                 </button>
                 <button
-                    className={`button ${activeFilter === 'herb' ? 'primary-button' : 'secondary-button'}`}
+                    className={`button ${activeFilter.toLowerCase() === 'herb' ? 'primary-button' : 'secondary-button'}`}
                     onClick={() => setActiveFilter('herb')}
                 >
                     Herbs

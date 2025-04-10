@@ -5,9 +5,9 @@
    --background-image: url('../assets/images/dark-wood-background.jpg');
   --text-color: #080707;
   --body-color: #f7f4ef;
-  --accent-color: #f0e9e9; /* Dark crimson */
+  --accent-color: rgba(30, 11, 238, 0.501); 
   --accent-dark: #5a1f1f;
-  --primary-color: #fdfcfb; /* A warm gold-tan */
+  --primary-color: #fdfcfb;
   --body-text: #111111;
   --secondary-color: #f7f6f6;
   --tertiary-color: #1e2b34; /* Dark muted teal */
@@ -15,14 +15,14 @@
   --light-gray: #2a2a2a;
   --border-color: #f70e1e;
   --button-color: #e6d3b3;
-  --button-text: #fafafa;
+  --button-text: #fafafa
   --shadow-color: rgba(30, 11, 238, 0.854);
   /* Flavor tags / audio cues */
-  --noise-static: #405c63; /* Muted steel blue */
-  --noise-pause: #6f4e37; /* Coffee brown */
-  --noise-sponsor: #b77e64; /* Clay/muted copper */
+  --noise-static: #405c63; 
+  --noise-pause: #6f4e37; 
+  --noise-sponsor: #b77e64; 
 
-  --standard-padding: 40px; /* Increased padding */
+  --standard-padding: 40px;
   --page-internal-padding: 20px;
   --card-border-radius: 12px;
   --button-border-radius: 30px;
@@ -528,7 +528,7 @@ h3-dark-mode {
 .primary-button:hover {
   background-color: var(--accent-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(30, 11, 238, 0.854);
 }
 
 /* Add styles for secondary buttons */
