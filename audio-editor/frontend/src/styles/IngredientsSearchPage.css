@@ -224,8 +224,12 @@
 .ingredient-alcohol {
   font-size: 14px;
   font-weight: 500;
-  color: #000000; /* Black for better readability */
+  color: #000000;
   background-color: rgb(255, 255, 255);
-  padding: 2px 8px;
+  padding: 0px 8px;
   border-radius: 12px;
+  line-height: 1.2;
+  display: inline-block;
+  height: 18px;
+  vertical-align: middle;
 } 

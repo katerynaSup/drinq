@@ -6,7 +6,8 @@
   --text-color: #080707;
   --body-color: #f7f4ef;
   --accent-color: rgba(30, 11, 238, 0.501); 
-  --accent-dark: #5a1f1f;
+  --accent-dark: #261f5a;
+  --accent-light: #e0e2f4;
   --primary-color: #fdfcfb;
   --body-text: #111111;
   --secondary-color: #f7f6f6;
@@ -539,11 +540,7 @@ h3-dark-mode {
 }
 
 .secondary-button:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--accent-color);
-  border-color: var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgb(254, 252, 252);
 }
 
 /* Consistent input styling */

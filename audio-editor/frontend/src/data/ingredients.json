@@ -45,7 +45,7 @@
         "description": "Tart citrus juice that adds brightness to cocktails.",
         "type": "Juice",
         "alcohol_content": 0,
-        "image": "/images/ingredients/lime-juice.jpg"
+        "image": "/images/ingredients/lime-juice.png"
     },
     {
         "id": "simple-syrup",
@@ -470,5 +470,77 @@
         "type": "Spice",
         "alcohol_content": 0,
         "image": "/images/ingredients/star-anise.png"
+    },
+    {
+        "id": "black-pepper",
+        "name": "Black Pepper",
+        "description": "Aromatic spice with a strong, pungent flavor, used in many cocktails.",
+        "type": "Spice",
+        "alcohol_content": 0,
+        "image": "/images/ingredients/black-pepper.png"
+    },
+    {
+        "id": "celery-salt",
+        "name": "Celery Salt",
+        "description": "Coarse salt made from celery seeds, used to rim cocktail glasses.",
+        "type": "Salt",
+        "alcohol_content": 0,
+        "image": "/images/ingredients/celery-salt.png"
+    },
+    {
+        "id": "mezcal",
+        "name": "Mezcal",
+        "description": "A smoky, agave-based spirit from Mexico, used in many cocktails.",
+        "type": "Spirit",
+        "alcohol_content": 40,
+        "image": "/images/ingredients/mezcal.png"
+    },
+    {
+        "id": "tequila",
+        "name": "Tequila",
+        "description": "A distilled alcoholic drink made from the blue agave plant in Mexico.",
+        "type": "Spirit",
+        "alcohol_content": 40,
+        "image": "/images/ingredients/tequila.png"
+    },
+    {
+        "id": "triple-sec",
+        "name": "Triple Sec",
+        "description": "A clear, orange-flavored liqueur often used in cocktails.",
+        "type": "Liqueur",
+        "alcohol_content": 20,
+        "image": "/images/ingredients/triple-sec.png"
+    },
+    {
+        "id": "orgeat-syrup",
+        "name": "Orgeat Syrup",
+        "description": "A sweet, creamy syrup made from almonds, used in many cocktails.",
+        "type": "Syrup",
+        "alcohol_content": 0,
+        "image": "/images/ingredients/orgeat-syrup.png"
+    },
+    {
+        "id": "orange-curacao",
+        "name": "Orange Curaçao",
+        "description": "A clear, orange-flavored liqueur often used in cocktails.",
+        "type": "Liqueur",
+        "alcohol_content": 20,
+        "image": "/images/ingredients/orange-curacao.png"
+    },
+    {
+        "id": "lemon-slice",
+        "name": "Lemon Slice",
+        "description": "Refreshing and cooling garnish often used in summer cocktails.",
+        "type": "Garnish",
+        "alcohol_content": 0,
+        "image": "/images/ingredients/lemon-slice.png"
+    },
+    {
+        "id": "lime-slice",
+        "name": "Lime Slice",
+        "description": "Refreshing and cooling garnish often used in summer cocktails.",
+        "type": "Garnish",
+        "alcohol_content": 0,
+        "image": "/images/ingredients/lime-slice.png"
     }
 ]

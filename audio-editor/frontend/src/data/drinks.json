@@ -29,5 +29,197 @@
     ],
     "alcohol_content": 10,
     "image_url": "/images/drinks/mojito.jpg"
+  },
+  {
+    "id": "pina-colada",
+    "name": "Piña Colada",
+    "description": "A tropical blend of rum, coconut cream, and pineapple juice.",
+    "glass": "Hurricane glass",
+    "method": "Blend all ingredients with ice until smooth.",
+    "ingredients": [
+      { "id": "rum", "amount": "2 oz" },
+      { "id": "coconut-cream", "amount": "1.5 oz" },
+      { "id": "pineapple-juice", "amount": "2 oz" }
+    ],
+    "alcohol_content": 13,
+    "image_url": "/images/drinks/pina-colada.jpg"
+  },
+  {
+    "id": "strawberry-daiquiri",
+    "name": "Strawberry Daiquiri",
+    "description": "A frozen cocktail with rum and strawberry puree.",
+    "glass": "Cocktail glass",
+    "method": "Blend all ingredients with ice until slushy and pour into glass.",
+    "ingredients": [
+      { "id": "rum", "amount": "1.5 oz" },
+      { "id": "strawberry-puree", "amount": "1 oz" },
+      { "id": "lime-juice", "amount": "0.5 oz" },
+      { "id": "simple-syrup", "amount": "0.5 oz" }
+    ],
+    "alcohol_content": 12,
+    "image_url": "/images/drinks/strawberry-daiquiri.jpg"
+  },
+  {
+    "id": "vodka-soda",
+    "name": "Vodka Soda",
+    "description": "A crisp and light cocktail made with vodka and soda water.",
+    "glass": "Highball glass",
+    "method": "Build in glass over ice and stir gently.",
+    "ingredients": [
+      { "id": "vodka", "amount": "1.5 oz" },
+      { "id": "sparkling-water", "amount": "Top up" }
+    ],
+    "alcohol_content": 12,
+    "image_url": "/images/drinks/vodka-soda.jpg"
+  },
+  {
+    "id": "bloody-mary",
+    "name": "Bloody Mary",
+    "description": "A savory brunch classic with vodka and tomato juice, spiced to perfection.",
+    "glass": "Highball glass",
+    "method": "Build in glass over ice, stir well, and garnish.",
+    "ingredients": [
+      { "id": "vodka", "amount": "2 oz" },
+      { "id": "tomato-juice", "amount": "4 oz" },
+      { "id": "lemon-juice", "amount": "0.5 oz" },
+      { "id": "worcestershire-sauce", "amount": "3 dashes" },
+      { "id": "tabasco", "amount": "2 dashes" },
+      { "id": "celery-salt", "amount": "Pinch" },
+      { "id": "black-pepper", "amount": "Pinch" }
+    ],
+    "alcohol_content": 10,
+    "image_url": "/images/drinks/bloody-mary.jpg"
+  },
+  {
+    "id": "mai-tai",
+    "name": "Mai Tai",
+    "description": "A tropical rum cocktail with citrus and almond flavors.",
+    "glass": "Old Fashioned glass",
+    "method": "Shake with ice and strain over fresh ice.",
+    "ingredients": [
+      { "id": "rum", "amount": "1.5 oz" },
+      { "id": "lime-juice", "amount": "0.75 oz" },
+      { "id": "orange-curacao", "amount": "0.5 oz" },
+      { "id": "orgeat", "amount": "0.5 oz" },
+      { "id": "simple-syrup", "amount": "0.25 oz" }
+    ],
+    "alcohol_content": 18,
+    "image_url": "/images/drinks/mai-tai.jpg"
+  },
+  {
+    "id": "margarita",
+    "name": "Margarita",
+    "description": "A tangy and bold tequila cocktail with lime and orange liqueur.",
+    "glass": "Coupe glass",
+    "method": "Shake with ice and strain into a salt-rimmed glass.",
+    "ingredients": [
+      { "id": "tequila", "amount": "2 oz" },
+      { "id": "lime-juice", "amount": "1 oz" },
+      { "id": "triple-sec", "amount": "1 oz" }
+    ],
+    "alcohol_content": 20,
+    "image_url": "/images/drinks/margarita.jpg"
+  },
+  {
+    "id": "whiskey-sour",
+    "name": "Whiskey Sour",
+    "description": "A balanced mix of whiskey, lemon juice, and sweetness.",
+    "glass": "Old Fashioned glass",
+    "method": "Shake with ice and strain into a glass over ice.",
+    "ingredients": [
+      { "id": "whiskey", "amount": "2 oz" },
+      { "id": "lemon-juice", "amount": "0.75 oz" },
+      { "id": "simple-syrup", "amount": "0.75 oz" }
+    ],
+    "alcohol_content": 16,
+    "image_url": "/images/drinks/whiskey-sour.jpg"
+  },
+  {
+    "id": "paloma",
+    "name": "Paloma",
+    "description": "A light and citrusy Mexican highball with tequila and grapefruit soda.",
+    "glass": "Highball glass",
+    "method": "Build in glass over ice, stir gently.",
+    "ingredients": [
+      { "id": "tequila", "amount": "2 oz" },
+      { "id": "grapefruit-soda", "amount": "Top up" },
+      { "id": "lime-juice", "amount": "0.5 oz" }
+    ],
+    "alcohol_content": 11,
+    "image_url": "/images/drinks/paloma.jpg"
+  },
+  {
+    "id": "sunset-spritz",
+    "name": "Sunset Spritz",
+    "description": "A sparkling citrus mocktail with a hint of pomegranate and lime.",
+    "glass": "Wine glass",
+    "method": "Build in glass over ice and gently stir.",
+    "ingredients": [
+      { "id": "orange-juice", "amount": "2 oz" },
+      { "id": "pomegranate-juice", "amount": "1 oz" },
+      { "id": "lime-juice", "amount": "0.5 oz" },
+      { "id": "club-soda", "amount": "Top up" }
+    ],
+    "alcohol_content": 0,
+    "image_url": "/images/drinks/sunset-spritz.jpg"
+  },
+  {
+    "id": "minty-cucumber-cooler",
+    "name": "Minty Cucumber Cooler",
+    "description": "Light, refreshing, and garden-fresh with cucumber, lime, and mint.",
+    "glass": "Highball glass",
+    "method": "Muddle, shake with ice, strain over fresh ice.",
+    "ingredients": [
+      { "id": "cucumber-slices", "amount": "3 slices" },
+      { "id": "mint-leaves", "amount": "6 leaves" },
+      { "id": "lime-juice", "amount": "0.75 oz" },
+      { "id": "simple-syrup", "amount": "0.5 oz" },
+      { "id": "club-soda", "amount": "Top up" }
+    ],
+    "alcohol_content": 0,
+    "image_url": "/images/drinks/minty-cucumber-cooler.jpg"
+  },
+  {
+    "id": "pineapple-ginger-snap",
+    "name": "Pineapple Ginger Snap",
+    "description": "Tropical pineapple meets spicy ginger for a lively zero-proof sipper.",
+    "glass": "Tumbler",
+    "method": "Shake and strain over ice.",
+    "ingredients": [
+      { "id": "pineapple-juice", "amount": "2 oz" },
+      { "id": "ginger-beer", "amount": "2 oz" },
+      { "id": "lime-juice", "amount": "0.5 oz" },
+      { "id": "honey-syrup", "amount": "0.5 oz" }
+    ],
+    "alcohol_content": 0,
+    "image_url": "/images/drinks/pineapple-ginger-snap.jpg"
+  },
+  {
+    "id": "lavender-lemon-fizz",
+    "name": "Lavender Lemon Fizz",
+    "description": "Floral and citrusy with a bubbly finish — pure refreshment.",
+    "glass": "Collins glass",
+    "method": "Shake and top with soda.",
+    "ingredients": [
+      { "id": "lemon-juice", "amount": "0.75 oz" },
+      { "id": "lavender-syrup", "amount": "0.5 oz" },
+      { "id": "club-soda", "amount": "Top up" }
+    ],
+    "alcohol_content": 0,
+    "image_url": "/images/drinks/lavender-lemon-fizz.jpg"
+  },
+  {
+    "id": "spiced-apple-toddy",
+    "name": "Spiced Apple Toddy",
+    "description": "Warm apple cider with a cinnamon kick, perfect for cozy nights.",
+    "glass": "Mug",
+    "method": "Heat gently and stir ingredients together.",
+    "ingredients": [
+      { "id": "apple-cider", "amount": "5 oz" },
+      { "id": "cinnamon-syrup", "amount": "0.5 oz" },
+      { "id": "lemon-juice", "amount": "0.25 oz" }
+    ],
+    "alcohol_content": 0,
+    "image_url": "/images/drinks/spiced-apple-toddy.jpg"
   }
 ] 

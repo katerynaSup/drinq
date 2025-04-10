@@ -73,7 +73,7 @@
 
 .nav-link:hover {
   opacity: 1;
-  color: #7175df;
+  color: white;
 }
 
 .nav-link:hover:after {
@@ -104,7 +104,7 @@
 }
 
 .bar-button:hover {
-  background-color: var(--accent-color);
+    box-shadow: 0 4px 10px rgb(254, 252, 252);
   transform: translateY(-2px);
 }
 
