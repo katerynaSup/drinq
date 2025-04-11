@@ -15,21 +15,17 @@ const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
                     </Link>
                 </div>
                 <div className="navbar-links">
-                    <Link to="/" className="nav-link">Home</Link>
-                    <Link to="/preferences" className="nav-link">Find Drinks</Link>
-                    <Link to="/ingredients" className="nav-link">By Ingredient</Link>
-                    <Link to="/explore" className="nav-link">Explore</Link>
-                    <li className="nav-item">
-                        <NavLink to="/drinks" className="nav-link" >
-                            Drinks
-                        </NavLink>
-                    </li>
+                    <NavLink to="/" className="nav-link">Home</NavLink>
+                    <NavLink to="/preferences" className="nav-link">Find Drinks</NavLink>
+                    <NavLink to="/ingredients" className="nav-link">By Ingredient</NavLink>
+                    <NavLink to="/explore" className="nav-link">Explore</NavLink>
+                    <NavLink to="/drinks" className="nav-link">Drinks</NavLink>
                     <button className="bar-button" onClick={onBarClick}>
                         <span className="bar-icon">🥃</span>
                         {barItemCount > 0 && (
                             <span className="bar-count">{barItemCount}</span>
                         )}
-                        Bar
+                        <span className="bar-text">Bar</span>
                     </button>
                 </div>
             </div>

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from 'react';
 import IngredientCard from './IngredientCard';
-import Bar from './Bar';
 import '../styles/IngredientsSearchPage.css';
 import ingredientsData from '../data/ingredients.json';
-import defaultImage from '../../public/images/logo.png';
-
+import { useNavigate } from 'react-router-dom';
 
 const IngredientsSearchPage = ({
+    onAddToBar,
+    barItems,
+    onRemoveFromBar,
     onGenerateDrinks
 }) => {
     const [ingredients, setIngredients] = useState([]);
     const [filteredIngredients, setFilteredIngredients] = useState([]);
-    const [barItems, setBarItems] = useState([]);
-    const [isBarOpen, setIsBarOpen] = useState(false);
     const [searchTerm, setSearchTerm] = useState('');
     const [activeFilter, setActiveFilter] = useState('all');
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const navigate = useNavigate();
 
     // Load ingredients from json file
     useEffect(() => {
@@ -27,8 +27,6 @@ const IngredientsSearchPage = ({
             ingredientsData.forEach(ingredient => {
                 if (!idSet.has(ingredient.id)) {
                     idSet.add(ingredient.id);
-
-                    // If image paths are already correct in the JSON, we can just use them directly
                     uniqueIngredients.push(ingredient);
                 } else {
                     console.warn(`Duplicate ingredient ID found: ${ingredient.id}`);
@@ -44,23 +42,6 @@ const IngredientsSearchPage = ({
             setLoading(false);
         }
     }, []);
-
-    // Load saved bar items from localStorage
-    useEffect(() => {
-        const savedBar = localStorage.getItem('ingredientBar');
-        if (savedBar) {
-            try {
-                setBarItems(JSON.parse(savedBar));
-            } catch (error) {
-                console.error('Error loading saved bar:', error);
-            }
-        }
-    }, []);
-
-    // Save bar to localStorage whenever it changes
-    useEffect(() => {
-        localStorage.setItem('ingredientBar', JSON.stringify(barItems));
-    }, [barItems]);
 
     // Filtering logic
     useEffect(() => {
@@ -93,18 +74,10 @@ const IngredientsSearchPage = ({
         setFilteredIngredients(results);
     }, [searchTerm, ingredients, activeFilter]);
 
-    const handleAddToBar = (ingredient) => {
-        // check if already in bar by ID
-        if (!barItems.some(item => item.id === ingredient.id)) {
-            const newBarItems = [...barItems, ingredient];
-            setBarItems(newBarItems);
-        } else {
-            alert(`${ingredient.name} is already in your bar`);
-        }
-    };
-
-    const handleRemoveFromBar = (ingredientId) => {
-        setBarItems(barItems.filter(item => item.id !== ingredientId));
+    const handleGenerateRecommendations = () => {
+        navigate('/recommendationPage', {
+            state: { ingredients: selectedIngredients }
+        });
     };
 
     if (loading) {
@@ -134,37 +107,37 @@ const IngredientsSearchPage = ({
 
             <div className="filter-tabs">
                 <button
-                    className={`button ${activeFilter.toLowerCase() === 'all' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter.toLowerCase() === 'all' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('all')}
                 >
                     All
                 </button>
                 <button
-                    className={`button ${activeFilter.toLowerCase() === 'spirit' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter.toLowerCase() === 'spirit' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('spirit')}
                 >
                     Spirits
                 </button>
                 <button
-                    className={`button ${activeFilter.toLowerCase() === 'juice' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter.toLowerCase() === 'juice' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('juice')}
                 >
                     Juices
                 </button>
                 <button
-                    className={`button ${activeFilter.toLowerCase() === 'syrup' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter.toLowerCase() === 'syrup' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('syrup')}
                 >
                     Syrups
                 </button>
                 <button
-                    className={`button ${activeFilter.toLowerCase() === 'garnish' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter.toLowerCase() === 'garnish' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('garnish')}
                 >
                     Garnishes
                 </button>
                 <button
-                    className={`button ${activeFilter.toLowerCase() === 'herb' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter.toLowerCase() === 'herb' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('herb')}
                 >
                     Herbs
@@ -177,7 +150,7 @@ const IngredientsSearchPage = ({
                         <IngredientCard
                             key={ingredient.id}
                             ingredient={ingredient}
-                            onAddToBar={handleAddToBar}
+                            onAddToBar={onAddToBar}
                             isInBar={barItems.some(item => item.id === ingredient.id)}
                         />
                     ))
@@ -187,14 +160,6 @@ const IngredientsSearchPage = ({
                     </div>
                 )}
             </div>
-
-            <Bar
-                barItems={barItems}
-                onRemoveItem={handleRemoveFromBar}
-                isOpen={isBarOpen}
-                onClose={() => setIsBarOpen(false)}
-                onGenerateDrinks={onGenerateDrinks}
-            />
         </div>
     );
 };

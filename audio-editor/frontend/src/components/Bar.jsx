@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Bar.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faMartiniGlassCitrus, faGlassWater } from '@fortawesome/free-solid-svg-icons';
 
 const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
     const navigate = useNavigate();
@@ -11,13 +13,14 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
 
     const handleFindDrinks = () => {
         // Close the bar
-
         onClose();
 
-        // Navigate to recommendations page with cart items as state
-        navigate('/ingredient-recommendations', {
+        // Navigate to main recommendations page with bar items as ingredients
+        navigate('/recommendationPage', {
             state: { ingredients: barItems }
         });
+
+        console.log("Navigating to recommendations with ingredients:", barItems);
     };
 
     console.log("Bar is open, items:", barItems); // Debug output
@@ -29,7 +32,7 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
                 onClose();
             }
         }}>
-            <div className="bar">
+            <div className="bar-panel">
                 <div className="bar-header">
                     <h2>Your Bar ({totalItems})</h2>
                     <button className="close-bar-button" onClick={onClose}>×</button>
@@ -37,13 +40,14 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
 
                 {totalItems === 0 ? (
                     <div className="empty-bar">
+                        <FontAwesomeIcon icon={faGlassWater} className="empty-bar-icon" />
                         <p>Your bar is empty</p>
                         <p className="empty-bar-subtext">Add some ingredients to get started</p>
                     </div>
                 ) : (
                     <>
-                        <div className="bar-items">
-                            <ul className="bar-items">
+                        <div className="bar-items-container">
+                            <ul className="bar-items-list">
                                 {barItems.map(item => (
                                     <li key={item.id} className="bar-item">
                                         <div className="bar-item-info">
@@ -63,10 +67,11 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
                                             </div>
                                         </div>
                                         <button
-                                            className="remove-item"
+                                            className="remove-item-button"
                                             onClick={() => onRemoveItem(item.id)}
+                                            title="Remove from bar"
                                         >
-                                            ×
+                                            <FontAwesomeIcon icon={faTrash} />
                                         </button>
                                     </li>
                                 ))}
@@ -74,22 +79,22 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
                         </div>
 
                         <div className="bar-footer">
-                            <div className="bar-summary">
-                                <span>Total Items: {totalItems}</span>
-                            </div>
                             <button
-                                className="find-drinks-button"
+                                className="make-drink-button"
                                 onClick={handleFindDrinks}
                             >
-                                Find Drinks With These
+                                <FontAwesomeIcon icon={faMartiniGlassCitrus} className="make-drink-icon" />
+                                Make Drinks With These
                             </button>
+
                             <button
-                                className="generate-drinks-button"
+                                className="generate-custom-button"
                                 onClick={onGenerateDrinks}
                                 disabled={totalItems < 2}
                             >
-                                Generate Drinks
+                                Generate Custom Drink
                             </button>
+
                             {totalItems < 2 && (
                                 <p className="minimum-notice">Add at least 2 ingredients to generate drinks</p>
                             )}

@@ -1,163 +1,115 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './styles/App.css';
-import PreferenceForm from './components/PreferenceForm';
 import BarNavbar from './components/BarNavbar';
 import IngredientsSearchPage from './components/IngredientsSearchPage';
-import IngredientRecommendationsPage from './components/IngredientRecommendationsPage';
 import DrinksPage from './components/DrinksPage';
 import DrinkDetailPage from './components/DrinkDetailPage';
-
-// Placeholder components - you'll create these later
-const HomePage = () => {
-    return (
-        <div className="page-container">
-            <div className="page-header">
-                <h1>Bar Drink Explorer</h1>
-                <p>Discover the perfect drink for any occasion</p>
-            </div>
-
-            <div className="grid-layout">
-                <div className="card">
-                    <div className="card-content">
-                        <h2>Find by Preference</h2>
-                        <p>Tell us what you like, and we'll recommend the perfect drink.</p>
-                        <a href="/preferences" className="button primary-button">Start Quiz</a>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <div className="card-content">
-                        <h2>Search by Ingredients</h2>
-                        <p>Have specific ingredients? Find drinks you can make right now.</p>
-                        <a href="/ingredients" className="button primary-button">Search</a>
-                    </div>
-                </div>
-
-                <div className="card">
-                    <div className="card-content">
-                        <h2>Browse Popular Drinks</h2>
-                        <p>Explore classic and trending cocktails from around the world.</p>
-                        <a href="/explore" className="button primary-button">Explore</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
-};
-
-const RecommendationsPage = ({ recommendations }) => {
-    if (!recommendations || recommendations.length === 0) {
-        return (
-            <div className="page-container">
-                <div className="page-header">
-                    <h1>Recommendations</h1>
-                    <p>No recommendations yet. Please fill out the preferences form.</p>
-                </div>
-            </div>
-        );
-    }
-
-    return (
-        <div className="page-container">
-            <div className="page-header">
-                <h1>Your Recommended Drinks</h1>
-            </div>
-            <div className="grid-layout">
-                {recommendations.map(drink => (
-                    <div key={drink.id} className="card">
-                        <img src={drink.image} alt={drink.name} className="card-image" />
-                        <div className="card-content">
-                            <h2>{drink.name}</h2>
-                            <p>{drink.description}</p>
-                            <a href={`/drinks/${drink.id}`} className="button primary-button">View Recipe</a>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-};
+import LandingPage from './components/LandingPage';
+import RecommendationPage from './components/RecommendationPage';
+import Bar from './components/Bar';
+import Coaster from './components/Coaster';
 
 function App() {
-    const [recommendations, setRecommendations] = useState([]);
     const [barItems, setBarItems] = useState([]);
     const [isBarOpen, setIsBarOpen] = useState(false);
+    const [coasterMessage, setCoasterMessage] = useState('');
+    const [showCoaster, setShowCoaster] = useState(false);
 
-    const handlePreferenceSubmit = async (preferences) => {
-        try {
-            const response = await fetch('/api/recommendations', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(preferences),
-            });
-
-            if (!response.ok) {
-                throw new Error(`Server returned ${response.status}`);
+    // Load bar items from localStorage on initial load
+    useEffect(() => {
+        const savedBarItems = localStorage.getItem('barItems');
+        if (savedBarItems) {
+            try {
+                setBarItems(JSON.parse(savedBarItems));
+            } catch (error) {
+                console.error('Error loading saved bar items:', error);
             }
+        }
+    }, []);
 
-            const data = await response.json();
-            setRecommendations(data);
-            // Navigate programmatically or use useNavigate in the component
-            window.location.href = '/recommendations';
-        } catch (error) {
-            console.error('Error getting recommendations:', error);
+    // Function to add an ingredient to the bar
+    const handleAddToBar = (ingredient) => {
+        // Check if the ingredient is already in the bar
+        if (!barItems.some(item => item.id === ingredient.id)) {
+            // Add the ingredient to the bar
+            const updatedBarItems = [...barItems, ingredient];
+            setBarItems(updatedBarItems);
+
+            // Save to localStorage
+            localStorage.setItem('barItems', JSON.stringify(updatedBarItems));
+
+            // Show a notification
+            setCoasterMessage(`Added ${ingredient.name} to your bar!`);
+            setShowCoaster(true);
+        } else {
+            // Already in bar, show message
+            setCoasterMessage(`${ingredient.name} is already in your bar!`);
+            setShowCoaster(true);
         }
     };
 
-    // Function to handle bar button click
-    const handleBarClick = () => {
-        setIsBarOpen(true);
+    // Function to remove an item from the bar
+    const handleRemoveFromBar = (ingredientId) => {
+        const updatedBarItems = barItems.filter(item => item.id !== ingredientId);
+        setBarItems(updatedBarItems);
+        localStorage.setItem('barItems', JSON.stringify(updatedBarItems));
     };
 
-    // Function to handle generating recommendations from bar ingredients
+    const handleToggleBar = () => {
+        setIsBarOpen(!isBarOpen);
+    };
+
+    const handleCloseBar = () => {
+        setIsBarOpen(false);
+    };
+
+    const handleCoasterClose = () => {
+        setShowCoaster(false);
+    };
+
     const handleGenerateDrinks = () => {
-        // Navigate to recommendations page with the bar items
-        window.location.href = `/ingredient-recommendations?ingredients=${barItems.map(item => item.id).join(',')}`;
+        // Implement the AI drink generation logic here
+        console.log("Generating drinks with ingredients:", barItems);
         setIsBarOpen(false);
     };
 
     return (
         <Router>
-            <div className="app-container">
+            <div className="app">
                 <BarNavbar
                     barItemCount={barItems.length}
-                    onBarClick={handleBarClick}
+                    onBarClick={handleToggleBar}
                 />
-                <main className="main-content">
-                    <Routes>
-                        <Route path="/" element={<HomePage />} />
-                        <Route
-                            path="/preferences"
-                            element={<PreferenceForm onSubmit={handlePreferenceSubmit} />}
+
+                <Bar
+                    barItems={barItems}
+                    onRemoveItem={handleRemoveFromBar}
+                    isOpen={isBarOpen}
+                    onClose={handleCloseBar}
+                    onGenerateDrinks={handleGenerateDrinks}
+                />
+
+                <Routes>
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/recommendationPage" element={<RecommendationPage />} />
+                    <Route path="/drinks" element={<DrinksPage />} />
+                    <Route path="/drinks/:id" element={<DrinkDetailPage />} />
+                    <Route path="/ingredients" element={
+                        <IngredientsSearchPage
+                            onAddToBar={handleAddToBar}
+                            barItems={barItems}
+                            onRemoveFromBar={handleRemoveFromBar}
+                            onGenerateDrinks={handleGenerateDrinks}
                         />
-                        <Route
-                            path="/recommendations"
-                            element={<RecommendationsPage recommendations={recommendations} />}
-                        />
-                        <Route
-                            path="/ingredients"
-                            element={
-                                <IngredientsSearchPage
-                                    barItems={barItems}
-                                    setBarItems={setBarItems}
-                                    isBarOpen={isBarOpen}
-                                    setIsBarOpen={setIsBarOpen}
-                                    onGenerateDrinks={handleGenerateDrinks}
-                                />
-                            }
-                        />
-                        <Route path="/explore" element={<div className="page-container">Explore Drinks (Coming Soon)</div>} />
-                        <Route path="/drinks" element={<DrinksPage />} />
-                        <Route path="/drinks/:id" element={<DrinkDetailPage />} />
-                        <Route path="/ingredient-recommendations" element={<IngredientRecommendationsPage />} />
-                    </Routes>
-                </main>
-                <footer className="site-footer">
-                    <p>&copy; {new Date().getFullYear()} Bar Drink Explorer</p>
-                </footer>
+                    } />
+                </Routes>
+
+                <Coaster
+                    message={coasterMessage}
+                    visible={showCoaster}
+                    onClose={handleCoasterClose}
+                />
             </div>
         </Router>
     );

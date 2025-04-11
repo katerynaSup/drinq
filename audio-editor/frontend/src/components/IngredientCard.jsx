@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/IngredientCard.css';
 import defaultImage from '../../public/images/logo.png';
 
-const IngredientCard = ({ ingredient, onAddToBar }) => {
+const IngredientCard = ({ ingredient, onAddToBar, isInBar }) => {
     return (
         <div className="ingredient-card">
             <div className="ingredient-image-container">
@@ -26,10 +26,11 @@ const IngredientCard = ({ ingredient, onAddToBar }) => {
                     </span>
                 </div>
                 <button
-                    className="add-to-bar-button"
+                    className={`add-to-bar-button ${isInBar ? 'in-bar' : ''}`}
                     onClick={() => onAddToBar(ingredient)}
+                    disabled={isInBar}
                 >
-                    Add to Bar
+                    {isInBar ? 'In Your Bar' : 'Add to Bar'}
                 </button>
             </div>
         </div>
