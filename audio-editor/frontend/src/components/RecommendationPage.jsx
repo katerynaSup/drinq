@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import '../styles/RecommendationPage.css';
+import '../styles/DrinkDetailPage.css';
 import DRINK_DATA from '../data/drinks.json';
+import '../styles/App.css';
 
 // Mock drink data - in a real app, this would come from an API or imported JSON
 
@@ -125,7 +127,10 @@ const RecommendationPage = () => {
 
     // Format ingredients list with separate elements for each ingredient
     const ingredientsDisplay = barIngredients.map((item, index) => (
-        <span key={index} className="ingredient-highlight">{item.name}</span>
+        <React.Fragment key={index}>
+            <span className="ingredient-highlight">{item.name}</span>
+            {index < barIngredients.length - 1 && <span className="ingredient-separator">, </span>}
+        </React.Fragment>
     ));
 
     return (
@@ -141,20 +146,15 @@ const RecommendationPage = () => {
 
             <div className="recommendations-grid">
                 {recommendations.map(drink => (
-                    <div key={drink.id} className="drink-card">
-                        <div className="match-badge">
-                            {drink.matchPercentage}% Match
-                        </div>
-
+                    <div className="card">
                         <img
                             src={drink.image_url || `/images/drinks/${drink.id}.jpg`}
                             alt={drink.name}
-                            className="drink-image"
+                            className="card-image"
                             onError={(e) => {
                                 e.target.src = '/images/drinks/default.jpg';
                             }}
                         />
-
                         <div className="drink-content">
                             <h2>{drink.name}</h2>
                             <p className="drink-description">{drink.description}</p>
@@ -188,10 +188,11 @@ const RecommendationPage = () => {
                                     })}
                                 </ul>
                             </div>
-
-                            <Link to={`/drinks/${drink.id}`} className="view-recipe-button">
-                                View Recipe
-                            </Link>
+                            <div className="button-container">
+                                <Link to={`/drinks/${drink.id}`} className="view-recipe-button">
+                                    View Recipe
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 ))}
