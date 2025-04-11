@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Bar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faMartiniGlassCitrus, faGlassWater } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faMortarPestle, faGlassWater, faMagicWandSparkles } from '@fortawesome/free-solid-svg-icons';
 
 const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
     const navigate = useNavigate();
@@ -83,15 +83,16 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
                                 className="make-drink-button"
                                 onClick={handleFindDrinks}
                             >
-                                <FontAwesomeIcon icon={faMartiniGlassCitrus} className="make-drink-icon" />
+                                <FontAwesomeIcon icon={faMortarPestle} className="make-drink-icon" />
                                 Make Drinks With These
                             </button>
 
                             <button
-                                className="generate-custom-button"
+                                    className="make-drink-button"
                                 onClick={onGenerateDrinks}
                                 disabled={totalItems < 2}
                             >
+                                <FontAwesomeIcon icon={faMagicWandSparkles} className="make-drink-icon" />
                                 Generate Custom Drink
                             </button>
 

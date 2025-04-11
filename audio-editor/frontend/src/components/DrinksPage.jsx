@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/DrinksPage.css';
 import drinksData from '../data/drinks.json';
+import '../styles/IngredientsSearchPage.css';
 
 // Export the drinks data for use in other components
 export const DRINKS_DATA = drinksData;
@@ -59,7 +60,7 @@ const DrinksPage = () => {
                     placeholder="Search drinks..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="input-field"
+                    className="search-input"
                 />
             </div>
 

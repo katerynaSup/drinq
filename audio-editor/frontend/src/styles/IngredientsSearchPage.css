@@ -35,18 +35,19 @@
   margin-right: auto;
 }
 
-.search-input {
+.input-field {
   width: 100%;
   padding: 12px 20px;
   border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background-color: rgb(232, 39, 39);
-  color: var(--text-color);
-  font-size: 16px;
+  border: 1px solid rgb(255, 255, 255);
+  background-color: rgb(4, 3, 3);
+  color: white;
+  font-weight: 600;
+  font-size: 20px;
   transition: all 0.3s ease;
 }
 
-.search-input:focus {
+.input-field:focus {
   outline: none;
   border-color: var(--accent-color);
   box-shadow: 0 0 0 2px rgba(255, 242, 198, 0.3);
