@@ -47,29 +47,26 @@ const DrinkDetailPage = () => {
             </Link>
 
             <div className="drink-detail-container">
-                <div className="drink-header">
-                    <div className="drink-image-container">
-                        <img
-                            src={drink.image_url || `/images/drinks/${drink.id}.jpg`}
-                            alt={drink.name}
-                            className="drink-detail-image"
-                            onError={(e) => {
-                                console.warn(`Failed to load image for ${drink.name}`);
-                                e.target.src = '/images/drinks/default.jpg';
-                            }}
-                        />
-                    </div>
+                <h1 className="drink-title">{drink.name}</h1>
 
-                    <div className="drink-header-content">
-                        <h1>{drink.name}</h1>
-                        <p className="drink-description">{drink.description}</p>
-                        <div className="drink-meta">
-                            <span className="glass-type">Glass: {drink.glass}</span>
-                        </div>
-                    </div>
+                <div className="centered-image-container">
+                    <img
+                        src={drink.image_url || `/images/drinks/${drink.id}.jpg`}
+                        alt={drink.name}
+                        className="drink-detail-image"
+                        onError={(e) => {
+                            console.warn(`Failed to load image for ${drink.name}`);
+                            e.target.src = '/images/drinks/default.jpg';
+                        }}
+                    />
                 </div>
 
                 <div className="drink-content">
+                    <p className="drink-description">{drink.description}</p>
+                    <div className="drink-meta">
+                        <span className="glass-type">Glass: {drink.glass}</span>
+                    </div>
+
                     <div className="ingredients-section">
                         <h2>Ingredients</h2>
                         <ul className="ingredients-list">

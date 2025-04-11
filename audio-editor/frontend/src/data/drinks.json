@@ -12,7 +12,7 @@
       { "id": "cranberry-juice", "amount": "1 oz" }
     ],
     "alcohol_content": 20,
-    "image_url": "/images/drinks/cosmopolitan.jpg"
+    "image_url": "/images/drinks/cosmopolitan.png"
   },
   {
     "id": "mojito",
@@ -28,7 +28,7 @@
       { "id": "club-soda", "amount": "Top up" }
     ],
     "alcohol_content": 10,
-    "image_url": "/images/drinks/mojito.jpg"
+    "image_url": "/images/drinks/mojito.png"
   },
   {
     "id": "pina-colada",
@@ -42,7 +42,7 @@
       { "id": "pineapple-juice", "amount": "2 oz" }
     ],
     "alcohol_content": 13,
-    "image_url": "/images/drinks/pina-colada.jpg"
+    "image_url": "/images/drinks/pina-colada.png"
   },
   {
     "id": "strawberry-daiquiri",
@@ -57,7 +57,7 @@
       { "id": "simple-syrup", "amount": "0.5 oz" }
     ],
     "alcohol_content": 12,
-    "image_url": "/images/drinks/strawberry-daiquiri.jpg"
+    "image_url": "/images/drinks/strawberry-daiquiri.png"
   },
   {
     "id": "vodka-soda",
@@ -70,7 +70,7 @@
       { "id": "sparkling-water", "amount": "Top up" }
     ],
     "alcohol_content": 12,
-    "image_url": "/images/drinks/vodka-soda.jpg"
+    "image_url": "/images/drinks/vodka-soda.png"
   },
   {
     "id": "bloody-mary",
@@ -88,7 +88,7 @@
       { "id": "black-pepper", "amount": "Pinch" }
     ],
     "alcohol_content": 10,
-    "image_url": "/images/drinks/bloody-mary.jpg"
+    "image_url": "/images/drinks/bloody-mary.png"
   },
   {
     "id": "mai-tai",
@@ -104,7 +104,7 @@
       { "id": "simple-syrup", "amount": "0.25 oz" }
     ],
     "alcohol_content": 18,
-    "image_url": "/images/drinks/mai-tai.jpg"
+    "image_url": "/images/drinks/mai-tai.png"
   },
   {
     "id": "margarita",
@@ -118,7 +118,7 @@
       { "id": "triple-sec", "amount": "1 oz" }
     ],
     "alcohol_content": 20,
-    "image_url": "/images/drinks/margarita.jpg"
+    "image_url": "/images/drinks/margarita.png"
   },
   {
     "id": "whiskey-sour",
@@ -132,7 +132,7 @@
       { "id": "simple-syrup", "amount": "0.75 oz" }
     ],
     "alcohol_content": 16,
-    "image_url": "/images/drinks/whiskey-sour.jpg"
+    "image_url": "/images/drinks/whiskey-sour.png"
   },
   {
     "id": "paloma",
@@ -146,7 +146,7 @@
       { "id": "lime-juice", "amount": "0.5 oz" }
     ],
     "alcohol_content": 11,
-    "image_url": "/images/drinks/paloma.jpg"
+    "image_url": "/images/drinks/paloma.png"
   },
   {
     "id": "sunset-spritz",
@@ -161,7 +161,7 @@
       { "id": "club-soda", "amount": "Top up" }
     ],
     "alcohol_content": 0,
-    "image_url": "/images/drinks/sunset-spritz.jpg"
+    "image_url": "/images/drinks/sunset-spritz.png"
   },
   {
     "id": "minty-cucumber-cooler",
@@ -177,7 +177,7 @@
       { "id": "club-soda", "amount": "Top up" }
     ],
     "alcohol_content": 0,
-    "image_url": "/images/drinks/minty-cucumber-cooler.jpg"
+    "image_url": "/images/drinks/minty-cucumber.png"
   },
   {
     "id": "pineapple-ginger-snap",
@@ -192,7 +192,7 @@
       { "id": "honey-syrup", "amount": "0.5 oz" }
     ],
     "alcohol_content": 0,
-    "image_url": "/images/drinks/pineapple-ginger-snap.jpg"
+    "image_url": "/images/drinks/pineapple-ginger-snap.png"
   },
   {
     "id": "lavender-lemon-fizz",
@@ -206,7 +206,7 @@
       { "id": "club-soda", "amount": "Top up" }
     ],
     "alcohol_content": 0,
-    "image_url": "/images/drinks/lavender-lemon-fizz.jpg"
+    "image_url": "/images/drinks/lavender-lemon-fizz.png"
   },
   {
     "id": "spiced-apple-toddy",
@@ -220,6 +220,6 @@
       { "id": "lemon-juice", "amount": "0.25 oz" }
     ],
     "alcohol_content": 0,
-    "image_url": "/images/drinks/spiced-apple-toddy.jpg"
+    "image_url": "/images/drinks/spiced-apple-toddy.png"
   }
 ] 

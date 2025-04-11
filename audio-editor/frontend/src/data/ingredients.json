@@ -24,14 +24,6 @@
         "image": "/images/ingredients/gin.png"
     },
     {
-        "id": "tequila",
-        "name": "Tequila",
-        "description": "A distilled beverage made from the blue agave plant in Mexico.",
-        "type": "Spirit",
-        "alcohol_content": 40,
-        "image": "/images/ingredients/tequila.png"
-    },
-    {
         "id": "orange-juice",
         "name": "Orange Juice",
         "description": "Fresh squeezed juice from oranges, adds a bright citrus flavor.",
@@ -229,7 +221,7 @@
         "description": "Spicy pepper slice used to add heat and kick to cocktails.",
         "type": "Spice",
         "alcohol_content": 0,
-        "image": "/images/ingredients/jalapeno.png"
+        "image": "/images/ingredients/jalapeno-slices.png"
     },
     {
         "id": "ginger-syrup",

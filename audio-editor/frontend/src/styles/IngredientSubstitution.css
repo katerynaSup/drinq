@@ -17,8 +17,8 @@
 .substitution-button {
   background: none;
   border: none;
-  color: var(--primary-color);
-  font-size: 12px;
+  color: #7c28f2;
+  font-size: 14px;
   cursor: pointer;
   text-decoration: underline;
   padding: 2px 6px;
@@ -29,7 +29,7 @@
   border-radius: 8px;
   padding: 10px;
   margin-top: 4px;
-  border-left: 3px solid var(--primary-color);
+  border-left: 3px solid var(--accent-color);
 }
 
 .substitution-list h4 {
@@ -41,7 +41,7 @@
 .substitution-item {
   margin-bottom: 8px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(44, 183, 234, 0.94);
 }
 
 .substitution-item:last-child {
