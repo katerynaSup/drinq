@@ -26,7 +26,7 @@ const IngredientCard = ({ ingredient, onAddToBar, isInBar }) => {
                     </span>
                 </div>
                 <button
-                    className={`add-to-bar-button ${isInBar ? 'in-bar' : ''}`}
+                    className={`add-button ${isInBar ? 'in-bar' : ''}`}
                     onClick={() => onAddToBar(ingredient)}
                     disabled={isInBar}
                 >

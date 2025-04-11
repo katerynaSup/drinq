@@ -115,7 +115,7 @@ const RecommendationPage = () => {
                 <div className="page-header">
                     <h1>No Matching Drinks Found</h1>
                     <p>We couldn't find any drinks with at least 50% match to your ingredients.</p>
-                    <div className="button-add-ingredients">
+                    <div className="add-button">
                         <Link to="/ingredients">Add More Ingredients</Link>
                     </div>
                 </div>

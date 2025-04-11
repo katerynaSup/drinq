@@ -7,7 +7,7 @@
 
 .drink-card-link:hover .card {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 10px 20px rgba(137, 110, 247, 0.952);
 }
 
 .drink-description {

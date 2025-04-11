@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../styles/DrinksPage.css';
 import drinksData from '../data/drinks.json';
 import '../styles/IngredientsSearchPage.css';
+import '../styles/App.css';
 
 // Export the drinks data for use in other components
 export const DRINKS_DATA = drinksData;
@@ -60,25 +61,25 @@ const DrinksPage = () => {
                     placeholder="Search drinks..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="search-input"
+                    className="input-field"
                 />
             </div>
 
             <div className="filter-tabs">
                 <button
-                    className={`button ${activeFilter === 'all' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter === 'all' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('all')}
                 >
                     All Drinks
                 </button>
                 <button
-                    className={`button ${activeFilter === 'spirit' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter === 'spirit' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('spirit')}
                 >
                     Spirit-based
                 </button>
                 <button
-                    className={`button ${activeFilter === 'non-alcoholic' ? 'primary-button' : 'secondary-button'}`}
+                    className={`filter-tab ${activeFilter === 'non-alcoholic' ? 'active' : ''}`}
                     onClick={() => setActiveFilter('non-alcoholic')}
                 >
                     Non-Alcoholic

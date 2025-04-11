@@ -608,7 +608,7 @@ h3-dark-mode {
 
 .filter-tab {
   background-color: transparent;
-  color: rgb(255, 251, 251);
+  color: rgb(255, 16, 16);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 20px;
   padding: 8px 16px;
@@ -629,3 +629,22 @@ h3-dark-mode {
   border-color: var(--primary-color);
   font-weight: 600;
 }
+
+.add-button {
+  background-color: var(--primary-color);
+  color: var(--background-color);
+  border: none;
+  border-radius: 25px;
+  padding: 10px 0;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  margin-top: auto;
+  box-shadow: 0 4px 15px rgb(21, 44, 255);
+}
+
+.add-button:hover {
+  transform: translateY(-2px);
+  background-color: rgb(211, 218, 255);
+} 
