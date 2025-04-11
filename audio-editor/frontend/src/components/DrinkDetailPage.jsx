@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import IngredientSubstitution from './IngredientSubstitution';
 import '../styles/DrinkDetailPage.css';
 import { DRINKS_DATA } from './DrinksPage';
 
 const DrinkDetailPage = () => {
     const { id } = useParams();
+    const location = useLocation();
     const [drink, setDrink] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [matchPercentage, setMatchPercentage] = useState(null);
+
+    // Get bar ingredients from location state (if available)
+    const barIngredients = location.state?.ingredients || [];
 
     useEffect(() => {
         try {
@@ -17,6 +22,38 @@ const DrinkDetailPage = () => {
 
             if (selectedDrink) {
                 setDrink(selectedDrink);
+
+                // Calculate match percentage if bar ingredients are available
+                if (barIngredients.length > 0) {
+                    const matchingIngredients = selectedDrink.ingredients.filter(drinkIngredient => {
+                        // Get the ingredient ID from the drink ingredient object
+                        const drinkIngredientId = typeof drinkIngredient === 'object'
+                            ? drinkIngredient.id
+                            : drinkIngredient;
+
+                        // Check if this ingredient exists in the bar
+                        return barIngredients.some(barIng => {
+                            const barIngId = barIng?.id?.toLowerCase();
+                            const barIngName = barIng?.name?.toLowerCase();
+
+                            // For drink ingredient, handle possible formats
+                            const drinkIngId = typeof drinkIngredientId === 'string'
+                                ? drinkIngredientId.toLowerCase()
+                                : '';
+
+                            // For comparison, either IDs match or names match
+                            return barIngId === drinkIngId ||
+                                (drinkIngredient?.name && barIngName === drinkIngredient.name.toLowerCase());
+                        });
+                    });
+
+                    // Calculate match percentage
+                    const percentage = Math.round(
+                        (matchingIngredients.length / selectedDrink.ingredients.length) * 100
+                    );
+
+                    setMatchPercentage(percentage);
+                }
             } else {
                 setError('Drink not found');
             }
@@ -26,7 +63,7 @@ const DrinkDetailPage = () => {
             setError(err.message);
             setLoading(false);
         }
-    }, [id]);
+    }, [id, barIngredients]);
 
     if (loading) {
         return <div className="loading-container">Loading drink details...</div>;
@@ -60,18 +97,34 @@ const DrinkDetailPage = () => {
                         }}
                     />
                 </div>
+                <div className="drink-meta">
+                    <span className="glass-type">Glass: {drink.glass}</span>
+
+                    {matchPercentage !== null && (
+                        <span className="match-percentage">
+                            {matchPercentage}% Match with Your Bar
+                        </span>
+                    )}
+                </div>
 
                 <div className="drink-content">
                     <p className="drink-description">{drink.description}</p>
-                    <div className="drink-meta">
-                        <span className="glass-type">Glass: {drink.glass}</span>
-                    </div>
 
                     <div className="ingredients-section">
                         <h2>Ingredients</h2>
                         <ul className="ingredients-list">
                             {drink.ingredients.map((ingredient, index) => (
-                                <li key={index}>
+                                <li key={index} className="ingredient-item">
+                                    <div className="ingredient-details">
+                                        <div className="ingredient-name">
+                                            {ingredient.id.replace(/-/g, ' ')}
+                                        </div>
+                                        {ingredient.amount && (
+                                            <div className="ingredient-amount">
+                                                {ingredient.amount}
+                                            </div>
+                                        )}
+                                    </div>
                                     <IngredientSubstitution
                                         ingredient={ingredient.id.replace(/-/g, ' ')}
                                         amount={ingredient.amount}

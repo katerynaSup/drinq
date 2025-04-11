@@ -189,7 +189,11 @@ const RecommendationPage = () => {
                                 </ul>
                             </div>
                             <div className="button-container">
-                                <Link to={`/drinks/${drink.id}`} className="view-recipe-button">
+                                <Link
+                                    to={`/drinks/${drink.id}`}
+                                    state={{ ingredients: barIngredients }}
+                                    className="view-recipe-button"
+                                >
                                     View Recipe
                                 </Link>
                             </div>
