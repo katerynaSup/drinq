@@ -75,6 +75,7 @@
 .filter-tab:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.5);
+  color: white;
   box-shadow: 0 4px 8px rgba(255, 255, 255, 0.968);
 }
 

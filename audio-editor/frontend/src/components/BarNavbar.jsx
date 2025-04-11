@@ -16,9 +16,7 @@ const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
                 </div>
                 <div className="navbar-links">
                     <NavLink to="/" className="nav-link">Home</NavLink>
-                    <NavLink to="/preferences" className="nav-link">Find Drinks</NavLink>
-                    <NavLink to="/ingredients" className="nav-link">By Ingredient</NavLink>
-                    <NavLink to="/explore" className="nav-link">Explore</NavLink>
+                    <NavLink to="/ingredients" className="nav-link">Ingredients</NavLink>
                     <NavLink to="/drinks" className="nav-link">Drinks</NavLink>
                     <button className="bar-button" onClick={onBarClick}>
                         <span className="bar-icon">🥃</span>

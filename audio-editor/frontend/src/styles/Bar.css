@@ -40,7 +40,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 2px;
   background-color: var(--primary-color);
   color: white;
 }
@@ -166,15 +166,15 @@
 
 .bar-footer {
   padding: 20px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: var(--card-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.13);
+  background-color: black;
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
 .make-drink-button {
-  background-color: var(--accent-color);
+  background-color: rgb(140, 124, 240);
   color: white;
   border: none;
   padding: 14px;
@@ -192,6 +192,7 @@
 .make-drink-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(229, 227, 227, 0.913);
 }
 
 .make-drink-icon {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/LandingPage.css';
+import "../styles/IngredientsSearchPage.css";
 
 const LandingPage = () => {
     return (
@@ -9,22 +10,17 @@ const LandingPage = () => {
                 <h1 className="hero-title">Bar Drink Explorer</h1>
                 <p className="hero-subtitle">Discover and mix the perfect drinks with ingredients you have</p>
 
-                <div className="action-buttons">
-                    <Link to="/preferences" className="primary-button">
+                <div className="filter-tabs">
+                    <Link to="/preferences" className="filter-tab">
                         Find Drinks by Preference
                     </Link>
-                    <Link to="/ingredients" className="secondary-button">
+                    <Link to="/ingredients" className="filter-tab">
                         Search by Ingredients
                     </Link>
                 </div>
             </div>
 
             <div className="feature-section">
-                <div className="feature-card">
-                    <div className="feature-icon">🍸</div>
-                    <h3>Find Your Perfect Drink</h3>
-                    <p>Tell us your preferences and we'll recommend cocktails tailored just for you.</p>
-                </div>
 
                 <div className="feature-card">
                     <div className="feature-icon">🥄</div>

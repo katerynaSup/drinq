@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Bar.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faMortarPestle, faGlassWater, faMagicWandSparkles } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faMortarPestle, faGlassWater, faMagicWandSparkles, faWhiskeyGlass } from '@fortawesome/free-solid-svg-icons';
 
 const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
     const navigate = useNavigate();
@@ -34,7 +34,8 @@ const Bar = ({ barItems, onRemoveItem, isOpen, onClose, onGenerateDrinks }) => {
         }}>
             <div className="bar-panel">
                 <div className="bar-header">
-                    <h2>Your Bar ({totalItems})</h2>
+                    <h2>Your Bar ({totalItems})
+                    </h2>
                     <button className="close-bar-button" onClick={onClose}>×</button>
                 </div>
 
