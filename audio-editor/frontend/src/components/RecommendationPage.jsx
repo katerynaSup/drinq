@@ -138,8 +138,10 @@ const RecommendationPage = () => {
             <div className="recommendation-header">
                 <h1>Drinks You Can Make</h1>
                 <p>Based on your bar ingredients:</p>
-                <div className="ingredients-used">
-                    {ingredientsDisplay}
+                <div className="ingredients-used-container">
+                    <div className="ingredients-used">
+                        {ingredientsDisplay}
+                    </div>
                 </div>
                 <p>Showing drinks with at least 50% ingredient match</p>
             </div>

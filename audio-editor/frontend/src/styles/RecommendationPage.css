@@ -28,15 +28,20 @@
 }
 
 .ingredient-separator {
-  color: white;
-  margin: 0 4px 0 2px;
+  display: none;
 }
 
 .ingredient-highlight {
-  color: rgb(174, 188, 249);
-  font-weight: bold;
+  background-color: var(--primary-color);
+  color: rgb(2, 0, 0);
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 16px;
   display: inline-block;
-  margin-bottom: 5px;
+  margin: 5px 5px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 2px 5px rgba(12, 60, 232, 0.2);
+  font-weight: 500;
 }
 
 .loading-container {
@@ -104,7 +109,11 @@
 }
 
 .drink-content {
-  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 15px;
+  position: relative;
 }
 
 .drink-content h2 {
@@ -147,13 +156,13 @@
   content: "•";
   position: absolute;
   left: 0;
-  color: var(--accent-color);
+  color: rgb(16, 11, 11);
 }
 
 .button-container {
-  margin-top: 20px;
-  display: flex;
-  justify-content: center;
+  margin-top: auto;
+  padding-top: 15px;
+  text-align: center;
 }
 
 .view-recipe-button {
@@ -175,7 +184,7 @@
 
 .view-recipe-button:hover {
   transform: translateY(-2px);
-  background-color: rgb(172, 182, 237);
+  box-shadow: 0 6px 20px rgba(108, 99, 233, 0.8);
 }
 
 .button-add-ingredients {
@@ -237,6 +246,33 @@
   border-radius: 12px;
   padding: 60px 20px;
 }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ingredients-used-container {
+  background-color: var(--card-bg);
+  padding: 15px 20px;
+  border-radius: 12px;
+  margin: 15px auto 25px;
+  max-width: 800px;
+  box-shadow: 0 4px 15px rgba(77, 108, 246, 0.3);
+}
+
+.ingredients-used h2{
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--text-color);
+  text-shadow: 0 0 5px rgba(77, 108, 246, 0.5), 
+               0 0 10px rgba(77, 108, 246, 0.3);
+  position: relative;
+  padding-bottom: 6px;
+}
+
 @media (max-width: 768px) {
   .recommendations-grid {
     grid-template-columns: 1fr;

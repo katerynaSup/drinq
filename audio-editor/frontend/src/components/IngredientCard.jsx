@@ -17,7 +17,7 @@ const IngredientCard = ({ ingredient, onAddToBar, isInBar }) => {
                 />
             </div>
             <div className="ingredient-content">
-                <h3 className="ingredient-name">{ingredient.name}</h3>
+                <h3>{ingredient.name}</h3>
                 <p className="ingredient-description">{ingredient.description}</p>
                 <div className="ingredient-meta">
                     <span className="ingredient-type">{ingredient.type}</span>

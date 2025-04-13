@@ -117,19 +117,21 @@ const AIBartenderPage = () => {
                         />
                     </div>
 
-                    <button
-                        className="generate-drink-button"
-                        onClick={handleGenerateDrinks}
-                        disabled={loading || barItems.length < 2}
-                    >
-                        {loading ? 'Mixing Drinks...' : 'Generate Custom Drinks'}
-                    </button>
+                    <div className="button-container">
+                        <button
+                            className="generate-drink-button"
+                            onClick={handleGenerateDrinks}
+                            disabled={loading || barItems.length < 2}
+                        >
+                            {loading ? 'Mixing Drinks...' : 'Generate Custom Drinks'}
+                        </button>
 
-                    {barItems.length < 2 && (
-                        <p className="minimum-notice">Add at least 2 ingredients to generate drinks</p>
-                    )}
+                        {barItems.length < 2 && (
+                            <p className="minimum-notice">Add at least 2 ingredients to generate drinks</p>
+                        )}
 
-                    {error && <p className="error-message">{error}</p>}
+                        {error && <p className="error-message">{error}</p>}
+                    </div>
                 </div>
 
                 {loading && (

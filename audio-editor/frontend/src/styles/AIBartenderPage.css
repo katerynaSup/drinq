@@ -16,7 +16,8 @@
     background-color: var(--card-bg);
     border-radius: var(--card-border-radius);
     padding: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .bar-ingredients-section,
@@ -39,30 +40,39 @@
 }
 
 .ingredient-tag {
-    background-color: var(--light-gray);
-    color: var(--primary-color);
+    background-color: rgba(241, 241, 241, 0.2);
+    color: var(--text-color);
     padding: 8px 15px;
     border-radius: 20px;
     font-size: 14px;
     display: inline-block;
+    border: 1px solid rgba(77, 108, 246, 0.3);
+    box-shadow: 0 4px 10px rgb(16, 38, 235);
 }
 
 .prompt-input {
     width: 100%;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 12px;
     font-size: 16px;
     background-color: #f9f9f9;
+    box-shadow: 0 0 0 2px rgb(174, 187, 255);
     resize: vertical;
-    color: var(--body-text);
+    color: black;
+}
+
+.prompt-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 5px 10px rgba(255, 242, 198, 0.3);
 }
 
 .generate-drink-button {
     width: 100%;
     padding: 14px 20px;
-    background-color: var(--button-color);
-    color: var(--background-color);
+    background-color: rgb(0, 0, 0);
+    color: white;
     border: none;
     border-radius: 30px;
     font-size: 16px;
@@ -70,13 +80,12 @@
     cursor: pointer;
     transition: all 0.2s ease;
     margin-top: 10px;
-    box-shadow: 0 4px 10px var(--shadow-color);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .generate-drink-button:hover:not(:disabled) {
     transform: translateY(-2px);
-    background-color: var(--accent-color);
-    color: white;
+    box-shadow: 0 4px 10px rgba(12, 74, 245, 0.913);
 }
 
 .generate-drink-button:disabled {
@@ -87,28 +96,30 @@
 .empty-bar-message {
     text-align: center;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(77, 108, 246, 0.1);
     border-radius: 10px;
+    border: 1px solid rgba(77, 108, 246, 0.2);
 }
 
 .empty-bar-message p {
     margin-bottom: 15px;
-    color: var(--body-text);
+    color: var(--text-color);
 }
 
 .minimum-notice {
     text-align: center;
     font-size: 14px;
     margin-top: 10px;
-    color: #888;
+    color: var(--text-color);
+    opacity: 0.7;
 }
 
 .error-message {
-    color: #d32f2f;
+    color: #ff4d4d;
     text-align: center;
     margin-top: 15px;
     padding: 10px;
-    background-color: rgba(211, 47, 47, 0.1);
+    background-color: rgba(255, 77, 77, 0.1);
     border-radius: 8px;
 }
 
@@ -122,7 +133,7 @@
 .cocktail-loader {
     width: 60px;
     height: 60px;
-    border: 5px solid rgba(0, 0, 0, 0.1);
+    border: 5px solid rgba(255, 255, 255, 0.1);
     border-top-color: var(--accent-color);
     border-radius: 50%;
     animation: spin 1s infinite linear;
@@ -140,12 +151,13 @@
     background-color: var(--card-bg);
     border-radius: var(--card-border-radius);
     padding: 25px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .generated-drinks-section h2 {
     margin-bottom: 20px;
-    color: var(--body-text);
+    color: var(--text-color);
     text-align: center;
 }
 
@@ -156,7 +168,7 @@
 }
 
 .drink-tab {
-    background-color: #f2f2f2;
+    background-color: rgba(250, 248, 248, 0.05);
     border-radius: 8px;
     padding: 15px 20px;
     cursor: pointer;
@@ -164,16 +176,19 @@
     justify-content: space-between;
     align-items: center;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(77, 108, 246, 0.1);
 }
 
 .drink-tab.active {
-    background-color: var(--accent-light);
+    background-color: rgba(77, 108, 246, 0.15);
+    border-color: rgba(77, 108, 246, 0.3);
 }
 
 .tab-arrow {
     font-size: 14px;
     transition: transform 0.3s ease;
+    color: var(--text-color);
 }
 
 .tab-arrow.open {
@@ -184,24 +199,28 @@
     margin: 0;
     font-size: 18px;
     flex: 1;
+    color: var(--text-color);
 }
 
 .drink-description {
     font-size: 14px;
-    color: #666;
+    color: var(--text-color);
+    opacity: 0.8;
     margin: 5px 0 0;
     flex: 2;
 }
 
 .drink-details {
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.2);
     border-radius: 0 0 8px 8px;
     padding: 20px;
     margin-top: -5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px;
+    border: 1px solid rgba(77, 108, 246, 0.1);
+    border-top: none;
 }
 
 .drink-ingredients,
@@ -213,12 +232,14 @@
 .drink-instructions h4 {
     margin-bottom: 10px;
     font-size: 16px;
-    color: var(--body-text);
+    color: var(--text-color);
+    opacity: 0.9;
 }
 
 .drink-ingredients ul,
 .drink-instructions ol {
     padding-left: 20px;
+    color: var(--text-color);
 }
 
 .drink-ingredients li,
@@ -230,6 +251,7 @@
 .ingredient-name {
     font-weight: 600;
     margin-right: 5px;
+    color: rgb(174, 188, 249);
 }
 
 .ingredient-amount {
@@ -243,9 +265,9 @@
     flex-wrap: wrap;
     gap: 10px;
     padding-top: 15px;
-    border-top: 1px solid #eee;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-size: 14px;
-    color: #666;
+    color: var(--text-color);
 }
 
 /* Responsive adjustments */

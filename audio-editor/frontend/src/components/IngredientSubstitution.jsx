@@ -37,7 +37,6 @@ const IngredientSubstitution = ({ ingredient, amount, unit }) => {
     return (
         <div className="ingredient-substitution">
             <div className="ingredient-item">
-                <span className="ingredient-info">{amount} {unit} {ingredient}</span>
                 <button
                     className="substitution-button"
                     onClick={fetchSubstitutions}

@@ -108,36 +108,40 @@ const DrinkDetailPage = () => {
                 </div>
 
                 <div className="drink-content">
-                    <p className="drink-description">{drink.description}</p>
-
-                    <div className="ingredients-section">
-                        <h2>Ingredients</h2>
-                        <ul className="ingredients-list">
-                            {drink.ingredients.map((ingredient, index) => (
-                                <li key={index} className="ingredient-item">
-                                    <div className="ingredient-details">
-                                        <div className="ingredient-name">
-                                            {ingredient.id.replace(/-/g, ' ')}
-                                        </div>
-                                        {ingredient.amount && (
-                                            <div className="ingredient-amount">
-                                                {ingredient.amount}
-                                            </div>
-                                        )}
-                                    </div>
-                                    <IngredientSubstitution
-                                        ingredient={ingredient.id.replace(/-/g, ' ')}
-                                        amount={ingredient.amount}
-                                        unit=""
-                                    />
-                                </li>
-                            ))}
-                        </ul>
+                    <div className="drink-description">
+                        {drink.description}
                     </div>
 
-                    <div className="method-section">
-                        <h2>Method</h2>
-                        <p>{drink.method}</p>
+                    <div className="drink-sections-container">
+                        <div className="ingredients-section">
+                            <h2>Ingredients</h2>
+                            <ul className="ingredients-list">
+                                {drink.ingredients.map((ingredient, index) => (
+                                    <li key={index} className="ingredient-item">
+                                        <div className="ingredient-details">
+                                            <div className="ingredient-name">
+                                                {ingredient.id.replace(/-/g, ' ')}
+                                            </div>
+                                            {ingredient.amount && (
+                                                <div className="ingredient-amount">
+                                                    {ingredient.amount}
+                                                </div>
+                                            )}
+                                        </div>
+                                        <IngredientSubstitution
+                                            ingredient={ingredient.id.replace(/-/g, ' ')}
+                                            amount={ingredient.amount}
+                                            unit=""
+                                        />
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+
+                        <div className="method-section">
+                            <h2>Method</h2>
+                            <p>{drink.method}</p>
+                        </div>
                     </div>
                 </div>
             </div>
