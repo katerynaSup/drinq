@@ -59,3 +59,5 @@ async def get_available_tags():
         for tag in drink.tags:
             tags.add(tag)
     return sorted(list(tags))
+
+

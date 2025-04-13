@@ -7,6 +7,7 @@ import DrinksPage from './components/DrinksPage';
 import DrinkDetailPage from './components/DrinkDetailPage';
 import LandingPage from './components/LandingPage';
 import RecommendationPage from './components/RecommendationPage';
+import AIBartenderPage from './components/AIBartenderPage';
 import Bar from './components/Bar';
 import Coaster from './components/Coaster';
 
@@ -68,9 +69,15 @@ function App() {
         setShowCoaster(false);
     };
 
+    // const handleGenerateDrinks = () => {
+    //     // Implement the AI drink generation logic here
+    //     console.log("Generating drinks with ingredients:", barItems);
+    //     setIsBarOpen(false);
+    // };
+
     const handleGenerateDrinks = () => {
-        // Implement the AI drink generation logic here
-        console.log("Generating drinks with ingredients:", barItems);
+        // Navigate to AI Bartender page with current bar items
+        window.location.href = '/ai-bartender';
         setIsBarOpen(false);
     };
 
@@ -90,11 +97,12 @@ function App() {
                     onGenerateDrinks={handleGenerateDrinks}
                 />
 
-                <Routes>
+<Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/recommendationPage" element={<RecommendationPage />} />
                     <Route path="/drinks" element={<DrinksPage />} />
                     <Route path="/drinks/:id" element={<DrinkDetailPage />} />
+                    <Route path="/ai-bartender" element={<AIBartenderPage />} />
                     <Route path="/ingredients" element={
                         <IngredientsSearchPage
                             onAddToBar={handleAddToBar}

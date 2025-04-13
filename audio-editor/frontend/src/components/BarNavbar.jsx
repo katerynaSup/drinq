@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom';
 import '../styles/BarNavbar.css';
 import logoImage from '../../public/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGlassWhiskey, faWineBottle, faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
+import { faGlassWhiskey, faWineBottle, faMartiniGlassCitrus, faMagicWandSparkles } from '@fortawesome/free-solid-svg-icons';
 
 const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
     return (
@@ -15,9 +15,13 @@ const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
                     </Link>
                 </div>
                 <div className="navbar-links">
-                    <NavLink to="/" className="nav-link">Home</NavLink>
+                <NavLink to="/" className="nav-link">Home</NavLink>
                     <NavLink to="/ingredients" className="nav-link">Ingredients</NavLink>
                     <NavLink to="/drinks" className="nav-link">Drinks</NavLink>
+                    <NavLink to="/ai-bartender" className="nav-link ai-bartender-link">
+                        <FontAwesomeIcon icon={faMagicWandSparkles} className="ai-icon" />
+                        AI Bartender
+                    </NavLink>
                     <button className="bar-button" onClick={onBarClick}>
                         <span className="bar-icon">🥃</span>
                         {barItemCount > 0 && (

@@ -3,11 +3,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import JSONResponse, FileResponse
 import os
-import whisper
 from pathlib import Path
 
 # Import the router we'll create
 from routers import drinks
+from routers import ai_bartender  # Import the new AI bartender route
+
 
 # Create FastAPI app
 app = FastAPI(
@@ -24,11 +25,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-# Initialize Whisper model
-print("Loading Whisper model...")
-model = whisper.load_model("base")
-print("Whisper model loaded")
 
 # Include the audio router
 app.include_router(drinks.router, prefix="/api", tags=["drinks"])
@@ -47,6 +43,20 @@ if not drinks_file.exists():
 @app.get("/api/health")
 def health_check():
     return {"status": "healthy"}
+
+
+
+
+# Include routers
+app.include_router(drinks.router, prefix="/api")
+app.include_router(ai_bartender.router, prefix="/api/ai-bartender")  # Add the AI bartender router
+
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the Bar Drink Explorer API"}
+
+
+
 
 # Mount static files
 frontend_path = Path("../frontend/dist")
