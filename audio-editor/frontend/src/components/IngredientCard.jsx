@@ -30,7 +30,7 @@ const IngredientCard = ({ ingredient, onAddToBar, isInBar }) => {
                     onClick={() => onAddToBar(ingredient)}
                     disabled={isInBar}
                 >
-                    {isInBar ? 'In Your Bar' : 'Add to Bar'}
+                    {isInBar ? 'In Your Bar Cart (Lets Make Some Drinks)' : 'Add to Your Bar Cart'}
                 </button>
             </div>
         </div>
