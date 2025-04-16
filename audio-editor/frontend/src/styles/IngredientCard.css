@@ -93,3 +93,16 @@ font-family: 'Open Sans', sans-serif;
   transform: translateY(-2px);
   background-color: var(--accent-color);
 } 
+
+.red-button {
+  background-color: #e63946;
+  color: white;
+}
+
+.red-button:hover {
+  background-color: #c92a36;
+}
+
+.red-button:active {
+  background-color: #a81f2a;
+}
