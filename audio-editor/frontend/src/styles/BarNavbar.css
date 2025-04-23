@@ -52,6 +52,7 @@
   align-items: center;
   gap: 5px;
   position: relative;
+  padding-right: 15px;
 }
 
 .bar-count {
@@ -82,6 +83,10 @@
 .bar-icon {
   font-size: 20px;
   margin-right: 5px;
+}
+
+.bar-text {
+  margin-right: 15px;
 }
 
 @media (max-width: 768px) {

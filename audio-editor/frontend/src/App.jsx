@@ -112,7 +112,12 @@ function App() {
                             onGenerateDrinks={handleGenerateDrinks}
                         />
                     } />
-                    <Route path="/my-bar" element={<MyBarPage barItems={barItems} />} />
+                    <Route path="/my-bar" element={
+                        <MyBarPage
+                            barItems={barItems}
+                            onRemoveFromBar={handleRemoveFromBar}
+                        />
+                    } />
                 </Routes>
 
                 <Coaster
