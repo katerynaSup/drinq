@@ -91,4 +91,117 @@
   padding: 8px;
   font-size: 13px;
   color: var(--primary-color);
+}
+
+.substitution-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.substitution-modal {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 2rem;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 5px;
+  line-height: 1;
+}
+
+.substitution-button {
+  background-color: transparent;
+  border: 1px solid rgba(77, 108, 246, 0.5);
+  color: #000000;
+  padding: 5px 10px;
+  border-radius: 15px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.substitution-button:hover {
+  background-color: rgba(77, 108, 246, 0.1);
+  border-color: #4d6cf6;
+}
+
+.ai-bartender-link {
+  display: inline-block;
+  background-color: #4d6cf6;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 20px;
+  text-decoration: none;
+  margin-top: 15px;
+  transition: all 0.2s ease;
+}
+
+.ai-bartender-link:hover {
+  background-color: #3d5ce6;
+  transform: translateY(-2px);
+}
+
+.no-substitutions {
+  text-align: center;
+  color: #ffffff;
+  padding: 1rem;
+}
+
+.substitution-list {
+  margin-top: 1rem;
+}
+
+.substitution-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.substitution-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.substitute-name {
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.authenticity-badge {
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 0.8rem;
+  color: white;
+}
+
+.substitution-notes {
+  color: #cccccc;
+  font-size: 0.9rem;
+  margin: 0;
 } 
