@@ -1,0 +1,107 @@
+.bar-page-container {
+    min-height: 100vh;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9));
+    padding: 2rem;
+}
+
+.bar-background {
+    background-image: url('/images/bar-background.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 120vh;
+    width: 100%;
+    border-radius: 15px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.bar-title {
+    color: #ffffff;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bar-shelf-container {
+    margin-top: 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.bottle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.bottle-container:hover {
+    transform: translateY(-5px);
+}
+
+.bottle-image-wrapper {
+    position: relative;
+    width: 100px;
+    height: 150px;
+    margin-bottom: 1rem;
+}
+
+.bottle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    position: relative;
+    z-index: 2;
+}
+
+.bottle-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(255, 255, 255, 0.2) 0%,
+        rgba(255, 255, 255, 0) 70%
+    );
+    filter: blur(8px);
+    z-index: 1;
+}
+
+.ingredient-label {
+    color: #ffffff;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    margin-top: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .bar-shelf-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+
+    .bottle-image-wrapper {
+        width: 80px;
+        height: 120px;
+    }
+
+    .ingredient-label {
+        font-size: 0.8rem;
+    }
+} 

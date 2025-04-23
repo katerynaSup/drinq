@@ -10,6 +10,7 @@ import RecommendationPage from './components/RecommendationPage';
 import AIBartenderPage from './components/AIBartenderPage';
 import Bar from './components/Bar';
 import Coaster from './components/Coaster';
+import MyBarPage from './components/MyBarPage';
 
 function App() {
     const [barItems, setBarItems] = useState([]);
@@ -97,7 +98,7 @@ function App() {
                     onGenerateDrinks={handleGenerateDrinks}
                 />
 
-<Routes>
+                <Routes>
                     <Route path="/" element={<LandingPage />} />
                     <Route path="/recommendationPage" element={<RecommendationPage />} />
                     <Route path="/drinks" element={<DrinksPage />} />
@@ -111,6 +112,7 @@ function App() {
                             onGenerateDrinks={handleGenerateDrinks}
                         />
                     } />
+                    <Route path="/my-bar" element={<MyBarPage barItems={barItems} />} />
                 </Routes>
 
                 <Coaster

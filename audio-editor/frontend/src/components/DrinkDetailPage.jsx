@@ -131,7 +131,8 @@ const DrinkDetailPage = () => {
                                         <IngredientSubstitution
                                             ingredient={ingredient.id.replace(/-/g, ' ')}
                                             amount={ingredient.amount}
-                                            unit=""
+                                            unit={ingredient.unit || ""}
+                                            name={ingredient.id.replace(/-/g, ' ')}
                                         />
                                     </li>
                                 ))}

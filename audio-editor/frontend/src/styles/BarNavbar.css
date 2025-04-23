@@ -1,156 +1,99 @@
 .bar-navbar {
-  background-color: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 0 var(--standard-padding);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba(200, 169, 126, 0.3);
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  width: 100%;
-  height: 70px;
-  box-sizing: border-box;
+  background-color: #1a1a1a;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .navbar-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: var(--max-content-width);
-  margin: 0 auto;
-  width: 100%;
 }
 
 .bar-logo {
-  font-size: 24px;
-  font-weight: bold;
   display: flex;
   align-items: center;
-}
-
-.logo-image {
-  height: 35px;
-  width: auto;
-  margin-right: 10px;
-}
-
-.navbar-links {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.nav-link {
-  color: var(--primary-color);
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  transition: color 0.2s ease;
-  padding: 5px 10px;
-  border-radius: 8px;
-  position: relative;
-}
-
-.nav-link:hover {
-  opacity: 1;
-  color: white;
-}
-
-.nav-link.active {
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-/* Add underline for active links */
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  bottom: -5px;
-  left: 0;
-  background-color: var(--primary-color);
-  transform-origin: center;
-  transition: transform 0.2s ease;
 }
 
 .logo-image {
   height: 40px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-  vertical-align: middle;
-  cursor: pointer;
 }
 
-.bar-button {
+.navbar-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #fafafa;
+  text-shadow: 0 0 10px rgb(203, 242, 254);
+  text-decoration: underline;
+}
+
+.nav-link.active {
+  color: #fafafa;
+  text-shadow: 0 0 10px rgb(212, 242, 246);
+  text-decoration: underline;
+}
+
+.bar-link {
   display: flex;
   align-items: center;
-  padding: 8px 16px;
-  background-color: var(--primary-color);
-  color: var(--background-color);
-  border: none;
-  border-radius: 20px;
-  font-weight: 500;
-  cursor: pointer;
+  gap: 5px;
   position: relative;
-  transition: all 0.2s ease;
-  margin-left: 10px;
-}
-
-.bar-button:hover {
-  box-shadow: 0 4px 10px rgb(254, 252, 252);
-  transform: translateY(-2px);
-}
-
-.bar-icon {
-  margin-right: 8px;
-  font-size: 18px;
-}
-
-.bar-text {
-  margin-left: 4px;
 }
 
 .bar-count {
   position: absolute;
   top: -10px;
   right: -10px;
-  background-color: #ff4d4d;
+  background-color: #4d6cf6;
   color: white;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 12px;
-  font-weight: bold;
-  border: 2px solid var(--background-color);
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  animation: badgePulse 0.5s;
-  z-index: 10;
+  padding: 2px 6px;
+  border-radius: 10px;
+  min-width: 20px;
+  text-align: center;
 }
 
-@keyframes badgePulse {
-  0% { transform: scale(0); }
-  70% { transform: scale(1.2); }
-  100% { transform: scale(1); }
+.ai-bartender-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
-/* Mobile navigation */
+.ai-icon {
+  margin-right: 5px;
+}
+
+.bar-icon {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
 @media (max-width: 768px) {
-  .navbar-inner {
-    flex-direction: column;
+  .navbar-links {
     gap: 15px;
   }
   
-  .navbar-links {
-    width: 100%;
-    justify-content: center;
-    flex-wrap: wrap;
+  .nav-link {
+    font-size: 14px;
+  }
+  
+  .bar-text {
+    display: none;
   }
 } 

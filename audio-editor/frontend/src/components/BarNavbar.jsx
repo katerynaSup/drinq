@@ -5,7 +5,7 @@ import logoImage from '../../public/images/logo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGlassWhiskey, faWineBottle, faMartiniGlassCitrus, faMagicWandSparkles } from '@fortawesome/free-solid-svg-icons';
 
-const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
+const BarNavbar = ({ barItemCount = 0 }) => {
     return (
         <div className="bar-navbar">
             <div className="navbar-inner">
@@ -15,20 +15,23 @@ const BarNavbar = ({ barItemCount = 0, onBarClick }) => {
                     </Link>
                 </div>
                 <div className="navbar-links">
-                <NavLink to="/" className="nav-link">Home</NavLink>
+                    <NavLink to="/" className="nav-link">Home</NavLink>
                     <NavLink to="/ingredients" className="nav-link">Ingredients</NavLink>
                     <NavLink to="/drinks" className="nav-link">Drinks</NavLink>
                     <NavLink to="/ai-bartender" className="nav-link ai-bartender-link">
                         <FontAwesomeIcon icon={faMagicWandSparkles} className="ai-icon" />
                         AI Bartender
                     </NavLink>
-                    <button className="bar-button" onClick={onBarClick}>
-                        <span className="bar-icon">🥃</span>
+                    <NavLink
+                        to="/my-bar"
+                        className="nav-link bar-link"
+                    >
+                        <FontAwesomeIcon icon={faGlassWhiskey} className="bar-icon" />
                         {barItemCount > 0 && (
                             <span className="bar-count">{barItemCount}</span>
                         )}
                         <span className="bar-text">Bar</span>
-                    </button>
+                    </NavLink>
                 </div>
             </div>
         </div>
