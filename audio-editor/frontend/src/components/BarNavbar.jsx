@@ -18,7 +18,7 @@ const BarNavbar = ({ barItemCount = 0 }) => {
                     <NavLink to="/" className="nav-link">Home</NavLink>
                     <NavLink to="/ingredients" className="nav-link">Ingredients</NavLink>
                     <NavLink to="/drinks" className="nav-link">Drinks</NavLink>
-                    <NavLink to="/ai-bartender" className="nav-link ai-bartender-link">
+                    <NavLink to="/ai-bartender" className="nav-link">
                         <FontAwesomeIcon icon={faMagicWandSparkles} className="ai-icon" />
                         AI Bartender
                     </NavLink>

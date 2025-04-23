@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import '../styles/MyBarPage.css';
 
 const MyBarPage = ({ barItems, onRemoveFromBar }) => {
     const [imageErrors, setImageErrors] = useState({});
+    const navigate = useNavigate();
 
     const handleImageError = (ingredientId) => {
         console.log(`Failed to load image for ingredient: ${ingredientId}`);
@@ -12,6 +14,10 @@ const MyBarPage = ({ barItems, onRemoveFromBar }) => {
             ...prev,
             [ingredientId]: true
         }));
+    };
+
+    const handleSeeDrinks = () => {
+        navigate('/recommendationPage', { state: { ingredients: barItems } });
     };
 
     const renderShelf = (startIndex) => {
@@ -25,7 +31,14 @@ const MyBarPage = ({ barItems, onRemoveFromBar }) => {
                         src={ingredient.image_url || `/images/ingredients/${ingredient.id.toLowerCase()}.png`}
                         alt={ingredient.name}
                         className="bottle-image"
-                        onError={() => handleImageError(ingredient.id)}
+                        onError={(e) => {
+                            // Try jpg if png fails
+                            e.target.src = `/images/ingredients/${ingredient.id.toLowerCase()}.jpg`;
+                            e.target.onerror = () => {
+                                // If both fail, handle the error
+                                handleImageError(ingredient.id);
+                            };
+                        }}
                     />
                     <div className="bottle-glow"></div>
                 </div>
@@ -56,6 +69,15 @@ const MyBarPage = ({ barItems, onRemoveFromBar }) => {
                     <div className="bar-shelf-container bottom-shelf">
                         {renderShelf(10)}
                     </div>
+                </div>
+
+                <div className="bar-actions">
+                    <button
+                        className="see-drinks-button"
+                        onClick={handleSeeDrinks}
+                    >
+                        See Drinks You Can Make
+                    </button>
                 </div>
             </div>
         </div>

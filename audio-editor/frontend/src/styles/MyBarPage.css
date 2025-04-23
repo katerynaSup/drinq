@@ -32,7 +32,7 @@
     margin-top: 4rem;
     width: 70%;  /* Reduce from 80% to 60% to bring items closer */
     margin-left: auto;
-    margin-right: 5rem;  /* Add right margin to shift everything right */
+    margin-right: 0rem;  /* Add right margin to shift everything right */
 }
 
 .bar-shelf-container {
@@ -50,7 +50,7 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    margin-left: 15rem;  /* Reduce from 20rem to 15rem */
+    margin-left: 12rem;  /* Reduce from 20rem to 15rem */
     transition: transform 0.3s ease;
     position: relative;
 }
@@ -123,12 +123,12 @@
 
 /* Adjust shelf positions if needed */
 .top-shelf {
-    margin-top: 2rem;
+    margin-top: 3rem;
     padding-top: 50px;  /* Add padding to move items down */
 }
 
 .middle-shelf {
-    margin-top: 0.2rem;
+    margin-top: 2rem;
 }
 
 .bottom-shelf {
@@ -151,4 +151,34 @@
     .ingredient-label {
         font-size: 0.8rem;
     }
+}
+
+.bar-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    padding: 1rem;
+}
+
+.see-drinks-button {
+    background-color: rgba(77, 108, 246, 0.9);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(77, 108, 246, 0.3);
+}
+
+.see-drinks-button:hover {
+    background-color: rgba(77, 108, 246, 1);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(77, 108, 246, 0.4);
+}
+
+.see-drinks-button:active {
+    transform: translateY(0);
 } 
