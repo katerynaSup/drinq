@@ -98,7 +98,10 @@ const DrinkDetailPage = () => {
                     />
                 </div>
                 <div className="drink-meta">
-                    <span className="glass-type">Glass: {drink.glass}</span>
+                    <div className="meta-pair">
+                        <span className="glass-type">Glass: {drink.glass}</span>
+                        <span className="glass-type">Alcohol: {drink.alcohol_content || 'Medium'}</span>
+                    </div>
 
                     {matchPercentage !== null && (
                         <span className="match-percentage">
