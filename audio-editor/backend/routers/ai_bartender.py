@@ -37,10 +37,13 @@ models = {}
 # API Keys for external LLM providers
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # Add this line
+
+# https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=GEMINI_API_KEY
 
 class LLMConfig(BaseModel):
     """Configuration for LLM selection"""
-    provider: Literal["local", "openai", "anthropic"] = Field(default="local", description="LLM provider to use")
+    provider: Literal["local", "openai", "anthropic", "gemini"] = Field(default="local", description="LLM provider to use")
     model_name: Optional[str] = Field(default=None, description="Model name to use")
 
 
@@ -80,6 +83,57 @@ def load_local_model(model_name: str = DEFAULT_MODEL):
             print(f"Error loading model: {str(e)}")
             return False
     return True
+
+
+# Add function to generate text using the Gemini API
+async def generate_with_gemini(prompt: str, model_name: str = "gemini-2.0-flash") -> str:
+    """Generate text using Google Gemini API"""
+    if not GEMINI_API_KEY:
+        raise ValueError("Gemini API key not found in environment variables")
+    
+    # Format the request according to Gemini API specifications
+    request_data = {
+        "contents": [
+            {
+                "role": "user",
+                "parts": [{"text": prompt}]
+            }
+        ],
+        "generationConfig": {
+            "temperature": 0.7,
+            "maxOutputTokens": 1000,
+            "topP": 0.95,
+            "topK": 50
+        }
+    }
+    
+    # The URL includes the model and API key
+    url = f"https://generativelanguage.googleapis.com/v1/models/{model_name}:generateContent?key={GEMINI_API_KEY}"
+    
+    async with httpx.AsyncClient(timeout=60.0) as client:
+        response = await client.post(
+            url,
+            json=request_data,
+            headers={"Content-Type": "application/json"}
+        )
+        
+        if response.status_code != 200:
+            raise ValueError(f"Gemini API error: {response.text}")
+        
+        data = response.json()
+        
+        # Extract the text from the response
+        if "candidates" in data and len(data["candidates"]) > 0:
+            candidate = data["candidates"][0]
+            if "content" in candidate and "parts" in candidate["content"]:
+                parts = candidate["content"]["parts"]
+                if parts and "text" in parts[0]:
+                    return parts[0]["text"]
+        
+        raise ValueError("Failed to extract text from Gemini API response")
+
+
+
 
 
 def generate_drink_prompt(ingredients: List[Dict], user_prompt: Optional[str] = None):
@@ -233,6 +287,9 @@ async def generate_drink_text(prompt: str, llm_config: LLMConfig) -> str:
     elif provider == "anthropic":
         model_name = model_name or "claude-3-haiku-20240307"
         return await generate_with_anthropic(prompt, model_name)
+    elif provider == "gemini":  # Add this section
+        model_name = model_name or "gemini-1.5-flash"
+        return await generate_with_gemini(prompt, model_name)
     else:
         raise ValueError(f"Unsupported LLM provider: {provider}")
 
@@ -476,6 +533,10 @@ async def get_available_llms():
         "anthropic": {
             "available": bool(ANTHROPIC_API_KEY),
             "models": ["claude-3-haiku-20240307", "claude-3-sonnet-20240229"] if ANTHROPIC_API_KEY else []
+        },
+        "gemini": {  # Add this section
+            "available": bool(GEMINI_API_KEY),
+            "models": ["gemini-1.5-flash", "gemini-1.5-pro"] if GEMINI_API_KEY else []
         }
     }
     
