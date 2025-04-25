@@ -38,7 +38,6 @@ models = {}
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")  # Add this line
-# GEMINI_API_KEY = "AIzaSyC2pCDvKx1ZricJcjExuuwNelilSsbrwk0";
 
 # https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=GEMINI_API_KEY
 
