@@ -11,11 +11,11 @@ const LandingPage = () => {
                 <p className="hero-subtitle">Discover and mix the perfect drinks with ingredients you have</p>
 
                 <div className="filter-tabs">
-                    <Link to="/preferences" className="filter-tab">
-                        Find Drinks by Preference
-                    </Link>
                     <Link to="/ingredients" className="filter-tab">
-                        Search by Ingredients
+                        Explore/Add Ingredients
+                    </Link>
+                    <Link to="/drinks" className="filter-tab">
+                        Explore All Drinks
                     </Link>
                 </div>
             </div>
@@ -24,7 +24,7 @@ const LandingPage = () => {
 
                 <div className="feature-card">
                     <div className="feature-icon">🥄</div>
-                    <h3>Use What You Have</h3>
+                    <h3>Browse Ingredients</h3>
                     <p>Add ingredients from your home bar and discover drinks you can make right now.</p>
                 </div>
 
@@ -32,6 +32,7 @@ const LandingPage = () => {
                     <div className="feature-icon">✨</div>
                     <h3>Get Creative</h3>
                     <p>Generate custom drink recipes with AI based on ingredients you select.</p>
+                    <Link to="/ai-bartender" className="feature-button">Generate Recipe</Link>
                 </div>
             </div>
 

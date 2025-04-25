@@ -8,6 +8,7 @@ from pathlib import Path
 # Import the router we'll create
 from routers import drinks
 from routers import ai_bartender  # Import the new AI bartender route
+from routers import ingredients
 
 
 # Create FastAPI app
@@ -50,6 +51,7 @@ def health_check():
 # Include routers
 app.include_router(drinks.router, prefix="/api")
 app.include_router(ai_bartender.router, prefix="/api/ai-bartender")  # Add the AI bartender router
+app.include_router(ingredients.router, prefix="/api")
 
 @app.get("/")
 async def root():

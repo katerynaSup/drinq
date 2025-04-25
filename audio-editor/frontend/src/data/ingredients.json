@@ -101,7 +101,7 @@
         "description": "Tart juice made from cranberries, great in vodka-based drinks.",
         "type": "Juice",
         "alcohol_content": 0,
-        "image": "/images/ingredients/cranberry.png"
+        "image": "/images/ingredients/cranberry-juice.png"
     },
     {
         "id": "pineapple-juice",
@@ -109,7 +109,7 @@
         "description": "Tropical fruit juice with a sweet and tart flavor.",
         "type": "Juice",
         "alcohol_content": 0,
-        "image": "/images/ingredients/pineapple.png"
+        "image": "/images/ingredients/pineapple-juice.png"
     },
     {
         "id": "coconut-cream",

@@ -11,13 +11,13 @@
 
 .ingredient-info {
   font-size: 14px;
-  color: var(--text-color);
+  color: white;
 }
 
 .substitution-button {
   background: none;
   border: none;
-  color: #7c28f2;
+  color: #f5f4f7;
   font-size: 14px;
   cursor: pointer;
   text-decoration: underline;
@@ -25,23 +25,23 @@
 }
 
 .substitution-list {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.406);
   border-radius: 8px;
   padding: 10px;
-  margin-top: 4px;
-  border-left: 3px solid var(--accent-color);
+  margin-top: 1px;
+  border-left: 3px solid white;
 }
 
 .substitution-list h4 {
   font-size: 13px;
   margin-bottom: 8px;
-  color: var(--primary-color);
+  color: white;
 }
 
 .substitution-item {
   margin-bottom: 8px;
   padding-bottom: 8px;
-  border-bottom: 1px solid rgba(44, 183, 234, 0.94);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.94);
 }
 
 .substitution-item:last-child {
@@ -53,6 +53,7 @@
 .substitution-header {
   display: flex;
   justify-content: space-between;
+  color: white;
   align-items: center;
   margin-bottom: 4px;
 }
@@ -73,8 +74,8 @@
 .substitution-notes {
   font-size: 12px;
   font-style: italic;
-  color: var(--text-color);
-  opacity: 0.8;
+  color: white;
+  opacity: 1;
 }
 
 .no-substitutions {
@@ -99,7 +100,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(236, 228, 228, 0.947);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -200,7 +201,70 @@
 }
 
 .substitution-notes {
-  color: #cccccc;
+  color: #f2eeee;
   font-size: 0.9rem;
   margin: 0;
+}
+
+.fullscreen-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    width: 90%;
+    max-width: 800px;
+    max-height: 90vh;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 30px rgba(254, 254, 254, 0.3);
+}
+
+.modal-header {
+    background-color: #2a2a2a;
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-header h2 {
+    color: #ffffff !important;
+    margin: 0;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.modal-title {
+    color: rgb(255, 255, 255);
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+}
+
+.close-modal-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0 10px;
+    line-height: 1;
+}
+
+.modal-body {
+    padding: 20px;
+    overflow-y: auto;
+    max-height: calc(90vh - 80px);
 } 

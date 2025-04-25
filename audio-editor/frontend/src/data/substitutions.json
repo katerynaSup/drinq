@@ -1,0 +1,757 @@
+{
+  "vodka": {
+    "substitutions": [
+      {
+        "substitute": "gin",
+        "authenticity": 80,
+        "notes": "Similar clean base spirit; botanical edge adds subtle flavor."
+      },
+      {
+        "substitute": "white rum",
+        "authenticity": 75,
+        "notes": "Neutral column-distilled spirit with light sweetness."
+      },
+      {
+        "substitute": "soju",
+        "authenticity": 70,
+        "notes": "Mild-flavored clear spirit, lower proof—drink may taste lighter."
+      }
+    ]
+  },
+
+  "rum": {
+    "substitutions": [
+      {
+        "substitute": "coconut-rum",
+        "authenticity": 80,
+        "notes": "Same base spirit; coconut adds a tropical note."
+      },
+      {
+        "substitute": "white tequila",
+        "authenticity": 65,
+        "notes": "Comparable ABV; grassy agave flavor changes profile."
+      },
+      {
+        "substitute": "vodka + ¼ tsp Demerara sugar",
+        "authenticity": 60,
+        "notes": "Replicates a light molasses sweetness."
+      }
+    ]
+  },
+
+  "gin": {
+    "substitutions": [
+      {
+        "substitute": "vodka + dash dry vermouth",
+        "authenticity": 75,
+        "notes": "Neutral spirit plus herbal hit approximates juniper."
+      },
+      {
+        "substitute": "tequila",
+        "authenticity": 60,
+        "notes": "Earthy agave replaces botanical bite—expect flavor shift."
+      }
+    ]
+  },
+
+  "orange-juice": {
+    "substitutions": [
+      {
+        "substitute": "pineapple-juice",
+        "authenticity": 70,
+        "notes": "Tropical sweetness; slightly less tart."
+      },
+      {
+        "substitute": "sour-mix + splash simple-syrup",
+        "authenticity": 60,
+        "notes": "Balances citrus acid and sweetness."
+      }
+    ]
+  },
+
+  "lime-juice": {
+    "substitutions": [
+      {
+        "substitute": "lemon-juice",
+        "authenticity": 90,
+        "notes": "Closest acid profile; slightly different aroma."
+      },
+      {
+        "substitute": "sour-mix",
+        "authenticity": 70,
+        "notes": "Use ¾ volume and cut back other sweeteners."
+      }
+    ]
+  },
+
+  "simple-syrup": {
+    "substitutions": [
+      {
+        "substitute": "agave-syrup",
+        "authenticity": 85,
+        "notes": "Sweeter by weight; reduce by ¼."
+      },
+      {
+        "substitute": "honey-syrup",
+        "authenticity": 80,
+        "notes": "Adds faint floral note; dilute 1 : 1 before use."
+      }
+    ]
+  },
+
+  "grenadine": {
+    "substitutions": [
+      {
+        "substitute": "pomegranate-juice + simple-syrup (1 : 1)",
+        "authenticity": 85,
+        "notes": "DIY house grenadine; use same volume."
+      },
+      {
+        "substitute": "raspberry syrup",
+        "authenticity": 65,
+        "notes": "Keeps color and tang with berry twist."
+      }
+    ]
+  },
+
+  "mint": {
+    "substitutions": [
+      {
+        "substitute": "basil",
+        "authenticity": 70,
+        "notes": "Fresh herb aroma; more peppery than minty."
+      },
+      {
+        "substitute": "rosemary (light muddle)",
+        "authenticity": 55,
+        "notes": "Piney freshness; use sparingly to avoid dominance."
+      }
+    ]
+  },
+
+  "club-soda": {
+    "substitutions": [
+      {
+        "substitute": "sparkling-water",
+        "authenticity": 95,
+        "notes": "Nearly identical; lacks sodium minerals."
+      },
+      {
+        "substitute": "tonic-water",
+        "authenticity": 60,
+        "notes": "Adds quinine bitterness and sugar—changes flavor."
+      }
+    ]
+  },
+
+  "tonic-water": {
+    "substitutions": [
+      {
+        "substitute": "club-soda + dash orange-bitters + ½ tsp simple-syrup",
+        "authenticity": 80,
+        "notes": "Replicates bitter-sweet quinine profile."
+      },
+      {
+        "substitute": "sparkling-water + splash lime-juice",
+        "authenticity": 60,
+        "notes": "Bright fizz and light bitterness."
+      }
+    ]
+  },
+
+  "cola": {
+    "substitutions": [
+      {
+        "substitute": "ginger-beer",
+        "authenticity": 60,
+        "notes": "Spicy soda; lacks caramel but similar sweetness."
+      },
+      {
+        "substitute": "cold-brew coffee + simple-syrup + club-soda",
+        "authenticity": 50,
+        "notes": "DIY dark bubbly mixer; richer flavor."
+      }
+    ]
+  },
+
+  "ginger-beer": {
+    "substitutions": [
+      {
+        "substitute": "ginger-syrup + club-soda (1 oz : 3 oz)",
+        "authenticity": 85,
+        "notes": "Custom sweet-spicy fizz."
+      },
+      {
+        "substitute": "ginger-ale",
+        "authenticity": 70,
+        "notes": "Milder spice; reduce sweeteners elsewhere."
+      }
+    ]
+  },
+
+  "cranberry-juice": {
+    "substitutions": [
+      {
+        "substitute": "pomegranate-juice",
+        "authenticity": 85,
+        "notes": "Similar tartness and deep color."
+      },
+      {
+        "substitute": "grenadine + club-soda (1 : 3)",
+        "authenticity": 70,
+        "notes": "Sweet-tart mix approximates flavor; add squeeze lemon."
+      }
+    ]
+  },
+
+  "pineapple-juice": {
+    "substitutions": [
+      {
+        "substitute": "passion-fruit-puree + simple-syrup (3 : 1)",
+        "authenticity": 75,
+        "notes": "Tropical tang with balanced sweetness."
+      },
+      {
+        "substitute": "orange-juice + simple-syrup (4 : 1)",
+        "authenticity": 70,
+        "notes": "Add ¼ oz syrup per oz OJ."
+      }
+    ]
+  },
+
+  "coconut-cream": {
+    "substitutions": [
+      {
+        "substitute": "coconut-syrup + ½ oz half-and-half",
+        "authenticity": 80,
+        "notes": "Maintains sweetness and rich texture."
+      },
+      {
+        "substitute": "coconut-rum (for tropical drinks)",
+        "authenticity": 60,
+        "notes": "Adds flavor and alcohol; reduce other spirits."
+      }
+    ]
+  },
+
+  "lemon-juice": {
+    "substitutions": [
+      {
+        "substitute": "lime-juice",
+        "authenticity": 90,
+        "notes": "Very close acid and citrus aroma."
+      },
+      {
+        "substitute": "sour-mix (unsweetened half)",
+        "authenticity": 65,
+        "notes": "Premix of citrus; watch sweetness."
+      }
+    ]
+  },
+
+  "agave-syrup": {
+    "substitutions": [
+      {
+        "substitute": "simple-syrup",
+        "authenticity": 85,
+        "notes": "Neutral sweetness; use 1.25× for same power."
+      },
+      {
+        "substitute": "honey-syrup",
+        "authenticity": 70,
+        "notes": "More floral; pairs well with tequila."
+      }
+    ]
+  },
+
+  "honey-syrup": {
+    "substitutions": [
+      {
+        "substitute": "simple-syrup",
+        "authenticity": 80,
+        "notes": "Neutral sweetener; loses honey aroma."
+      },
+      {
+        "substitute": "agave-syrup",
+        "authenticity": 75,
+        "notes": "Smooth sweetness; earthier notes."
+      }
+    ]
+  },
+
+  "basil": {
+    "substitutions": [
+      {
+        "substitute": "mint",
+        "authenticity": 70,
+        "notes": "Similar freshness; cooler flavor."
+      },
+      {
+        "substitute": "thyme",
+        "authenticity": 55,
+        "notes": "Herbal aroma; more savory."
+      }
+    ]
+  },
+
+  "cucumber": {
+    "substitutions": [
+      {
+        "substitute": "cucumber-infused water (2 h steep)",
+        "authenticity": 90,
+        "notes": "Replicates light vegetal note."
+      },
+      {
+        "substitute": "fresh melon cubes",
+        "authenticity": 60,
+        "notes": "Similar watery freshness; sweeter."
+      }
+    ]
+  },
+
+  "blackberry": {
+    "substitutions": [
+      {
+        "substitute": "raspberry",
+        "authenticity": 80,
+        "notes": "Comparable tart sweet berry flavor."
+      },
+      {
+        "substitute": "blackberry jam + splash lemon-juice",
+        "authenticity": 70,
+        "notes": "Adds depth and color."
+      }
+    ]
+  },
+
+  "peach-puree": {
+    "substitutions": [
+      {
+        "substitute": "peach schnapps + simple-syrup (½ oz each)",
+        "authenticity": 75,
+        "notes": "Alcoholic but similar flavor intensity."
+      },
+      {
+        "substitute": "muddled fresh peach + ½ tsp sugar",
+        "authenticity": 70,
+        "notes": "Rustic puree; strain for smoother texture."
+      }
+    ]
+  },
+
+  "egg-white": {
+    "substitutions": [
+      {
+        "substitute": "aquafaba (chickpea brine)",
+        "authenticity": 90,
+        "notes": "Creates identical foam; vegan."
+      },
+      {
+        "substitute": "pasteurized egg-white powder (rehydrated)",
+        "authenticity": 85,
+        "notes": "Safe shelf-stable option."
+      }
+    ]
+  },
+
+  "maraschino-cherry": {
+    "substitutions": [
+      {
+        "substitute": "brandied cherry",
+        "authenticity": 85,
+        "notes": "Richer flavor; less neon color."
+      },
+      {
+        "substitute": "cranberry + ¼ tsp simple-syrup",
+        "authenticity": 55,
+        "notes": "Tart pop of red; different flavor."
+      }
+    ]
+  },
+
+  "olive": {
+    "substitutions": [
+      {
+        "substitute": "pickle slice",
+        "authenticity": 60,
+        "notes": "Savory brine element for martini riffs."
+      },
+      {
+        "substitute": "cocktail onion",
+        "authenticity": 55,
+        "notes": "Switches to a Gibson-style; sweeter brine."
+      }
+    ]
+  },
+
+  "lychee-syrup": {
+    "substitutions": [
+      {
+        "substitute": "rose-water + simple-syrup (few drops RW per ½ oz SS)",
+        "authenticity": 75,
+        "notes": "Floral sweetness with similar exotic note."
+      },
+      {
+        "substitute": "passion-fruit-puree + simple-syrup",
+        "authenticity": 60,
+        "notes": "Tropical flavor; different aroma."
+      }
+    ]
+  },
+
+  "passion-fruit-puree": {
+    "substitutions": [
+      {
+        "substitute": "pineapple-juice + ¼ oz lime-juice",
+        "authenticity": 70,
+        "notes": "Tropical sweet-tart replacement."
+      },
+      {
+        "substitute": "orange-juice + splash grenadine",
+        "authenticity": 55,
+        "notes": "Adds color and tang."
+      }
+    ]
+  },
+
+  "jalapeno-slice": {
+    "substitutions": [
+      {
+        "substitute": "black-pepper (cracked) + dash hot-sauce",
+        "authenticity": 70,
+        "notes": "Delivers heat and spice."
+      },
+      {
+        "substitute": "serrano slice",
+        "authenticity": 90,
+        "notes": "Similar vegetal spice profile."
+      }
+    ]
+  },
+
+  "ginger-syrup": {
+    "substitutions": [
+      {
+        "substitute": "fresh ginger muddled + simple-syrup",
+        "authenticity": 90,
+        "notes": "Authentic spice; strain solids."
+      },
+      {
+        "substitute": "ginger-ale reduced (2 : 1 simmer)",
+        "authenticity": 65,
+        "notes": "Concentrates flavor and sweetness."
+      }
+    ]
+  },
+
+  "tamarind-paste": {
+    "substitutions": [
+      {
+        "substitute": "Lime Juice + Dash Brown Sugar",
+        "authenticity": 60,
+        "notes": "Balances tartness and earthy sweetness."
+      },
+      {
+        "substitute": "Pomegranate Juice Reduced by Half",
+        "authenticity": 55,
+        "notes": "Gives tangy depth with dark fruit note."
+      }
+    ]
+  },
+
+  "chili-powder": {
+    "substitutions": [
+      {
+        "substitute": "Tajín Seasoning",
+        "authenticity": 85,
+        "notes": "Adds chili-lime flavor for glass rims."
+      },
+      {
+        "substitute": "Smoked Paprika + Pinch Salt",
+        "authenticity": 65,
+        "notes": "Smoky heat without cumin."
+      }
+    ]
+  },
+
+  "blue-curacao": {
+    "substitutions": [
+      {
+        "substitute": "Orange-Curacao + Drop Blue Food-Color",
+        "authenticity": 95,
+        "notes": "Same orange flavor with iconic color."
+      },
+      {
+        "substitute": "Triple-Sec + Drop Blue Color",
+        "authenticity": 90,
+        "notes": "Higher ABV orange liqueur base."
+      }
+    ]
+  },
+
+  "rose-water": {
+    "substitutions": [
+      {
+        "substitute": "Lavender Syrup (use ½ volume)",
+        "authenticity": 70,
+        "notes": "Floral; different blossom aroma."
+      },
+      {
+        "substitute": "Orange Blossom Water",
+        "authenticity": 60,
+        "notes": "Still floral and delicate."
+      }
+    ]
+  },
+
+  "lavender-syrup": {
+    "substitutions": [
+      {
+        "substitute": "Simple Syrup + Drop Rose-Water",
+        "authenticity": 70,
+        "notes": "Maintains floral tone."
+      },
+      {
+        "substitute": "Violet Liqueur (non-alc version) + Simple Syrup",
+        "authenticity": 60,
+        "notes": "Adds purple hue and floral profile."
+      }
+    ]
+  },
+
+  "matcha-powder": {
+    "substitutions": [
+      {
+        "substitute": "Green Tea (concentrated brew)",
+        "authenticity": 75,
+        "notes": "Earthy tea flavor; thinner texture."
+      },
+      {
+        "substitute": "Spirulina Powder (pinch) + Simple Syrup",
+        "authenticity": 50,
+        "notes": "Gives green color and subtle earthiness."
+      }
+    ]
+  },
+
+  "green-tea": {
+    "substitutions": [
+      {
+        "substitute": "Matcha Powder Whisked in Water",
+        "authenticity": 80,
+        "notes": "Stronger grassy note."
+      },
+      {
+        "substitute": "Earl Grey Tea (light brew)",
+        "authenticity": 45,
+        "notes": "Floral bergamot twist."
+      }
+    ]
+  },
+
+  "soju-1": {
+    "substitutions": [
+      {
+        "substitute": "Vodka (diluted with 1 part water to 3 parts vodka)",
+        "authenticity": 80,
+        "notes": "Approximates lower ABV and neutrality."
+      },
+      {
+        "substitute": "Sake (junmai), same volume",
+        "authenticity": 65,
+        "notes": "Similar mild rice note; less neutral."
+      }
+    ]
+  },
+
+  "bacardi-1": {
+    "substitutions": [
+      {
+        "substitute": "Rum",
+        "authenticity": 95,
+        "notes": "Same spirit type; brand difference negligible."
+      },
+      {
+        "substitute": "Coconut Rum (reduce other sweeteners)",
+        "authenticity": 70,
+        "notes": "Adds coconut nuance."
+      }
+    ]
+  },
+
+  "coconut-syrup": {
+    "substitutions": [
+      {
+        "substitute": "Coconut Cream Diluted 1 : 1 with Simple Syrup",
+        "authenticity": 80,
+        "notes": "Keeps creamy coconut sweetness."
+      },
+      {
+        "substitute": "Coconut Rum (½ volume)",
+        "authenticity": 60,
+        "notes": "Adds alcohol and coconut flavor."
+      }
+    ]
+  },
+
+  "coconut-rum": {
+    "substitutions": [
+      {
+        "substitute": "Rum + ¼ oz Coconut Syrup",
+        "authenticity": 90,
+        "notes": "Replicates sweetness and coconut taste."
+      },
+      {
+        "substitute": "Vanilla Vodka + Dash Coconut Cream",
+        "authenticity": 70,
+        "notes": "Keeps tropical dessert profile."
+      }
+    ]
+  },
+
+  "aperol": {
+    "substitutions": [
+      {
+        "substitute": "Orange-Curacao + Dash Orange-Bitters",
+        "authenticity": 75,
+        "notes": "Matches bitter-sweet orange at higher ABV."
+      },
+      {
+        "substitute": "Campari (use ¾ volume) + Simple Syrup",
+        "authenticity": 65,
+        "notes": "More bitter and red; adjust sweetness."
+      }
+    ]
+  },
+
+  "cinnamon-syrup": {
+    "substitutions": [
+      {
+        "substitute": "Simple Syrup + Pinch Ground Cinnamon",
+        "authenticity": 85,
+        "notes": "Quick DIY replacement; strain if needed."
+      },
+      {
+        "substitute": "Cinnamon Stick Muddled + Honey Syrup",
+        "authenticity": 70,
+        "notes": "Adds warm spice and depth."
+      }
+    ]
+  },
+
+  "sour-mix": {
+    "substitutions": [
+      {
+        "substitute": "Equal Parts Lemon Juice and Simple Syrup",
+        "authenticity": 95,
+        "notes": "Classic DIY mix."
+      },
+      {
+        "substitute": "Lime Juice + Agave Syrup",
+        "authenticity": 85,
+        "notes": "South-of-border twist."
+      }
+    ]
+  },
+
+  "orange-bitters-1": {
+    "substitutions": [
+      {
+        "substitute": "Dash Angostura Bitters + Orange Zest",
+        "authenticity": 80,
+        "notes": "Adds spice and citrus aroma."
+      },
+      {
+        "substitute": "Drop Orange-Curacao + Dash Club-Soda",
+        "authenticity": 60,
+        "notes": "Mild orange note; less concentrated."
+      }
+    ]
+  },
+
+  "sparkling-water": {
+    "substitutions": [
+      {
+        "substitute": "Club Soda",
+        "authenticity": 95,
+        "notes": "Same carbonation; slight mineral taste."
+      },
+      {
+        "substitute": "Tonic Water (reduce sweeteners)",
+        "authenticity": 60,
+        "notes": "Adds quinine bitterness and sweetness."
+      }
+    ]
+  },
+
+  "cherry-liqueur-1": {
+    "substitutions": [
+      {
+        "substitute": "Maraschino Cherry Syrup + Vodka (1 : 1)",
+        "authenticity": 80,
+        "notes": "Replicates sweet cherry spirit."
+      },
+      {
+        "substitute": "grenadine + splash brandy",
+        "authenticity": 65,
+        "notes": "Fruity and sweet; darker color."
+      }
+    ]
+  },
+
+  "strawberry": {
+    "substitutions": [
+      {
+        "substitute": "Vodka + Strawberry Puree (½ oz per berry)",
+        "authenticity": 90,
+        "notes": "Smooth texture; same flavor."
+      },
+      {
+        "substitute": "Raspberry + ¼ tsp Simple Syrup",
+        "authenticity": 60,
+        "notes": "Brighter tart berry profile."
+      }
+    ]
+  },
+
+  "strawberry-puree": {
+    "substitutions": [
+      {
+        "substitute": "Vodka + Strawberry Syrup (use ¾ volume)",
+        "authenticity": 80,
+        "notes": "Sweeter and more fluid; cut other sugar."
+      },
+      {
+        "substitute": "Muddled Fresh Strawberry + Simple Syrup",
+        "authenticity": 85,
+        "notes": "DIY puree in-glass."
+      }
+    ]
+  },
+
+  "strawberry-syrup": {
+    "substitutions": [
+      {
+        "substitute": "Simple Syrup + Muddled Strawberry",
+        "authenticity": 85,
+        "notes": "Fresh fruit sweetness and flavor."
+      },
+      {
+        "substitute": "Raspberry Syrup",
+        "authenticity": 70,
+        "notes": "Similar berry sweetness; color slightly deeper."
+      }
+    ]
+  },
+
+  "strawberry-vodka": {
+    "substitutions": [
+      {
+        "substitute": "Vodka + Strawberry Puree (shake, strain)",
+        "authenticity": 90,
+        "notes": "Infuses fresh strawberry flavor."
+      }
+    ]
+  }
+}
+       
