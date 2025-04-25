@@ -28,8 +28,8 @@
 }
 
 .action-buttons {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
   gap: 15px;
   max-width: 350px;
   margin: 0 auto;
@@ -75,12 +75,12 @@
   text-align: center;
   grid-template-columns: repeat(2, minmax(250px, 300px));
   gap: 30px;
-  justify-content: center;
+    justify-content: center;
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
-}
-
+  }
+  
 @media (max-width: 768px) {
   .feature-section {
     grid-template-columns: 1fr;
@@ -115,11 +115,11 @@
 .feature-card p {
   font-size: 0.9rem;
   opacity: 0.9;
-  color: var(--text-color);
-}
-
+    color: var(--text-color);
+  }
+  
 .popular-section {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }
 
 .popular-section h2 {
@@ -164,4 +164,4 @@
 .popular-drink-card h3 {
   margin: 0;
   font-size: 1rem;
-}
+  }

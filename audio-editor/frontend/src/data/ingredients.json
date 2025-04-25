@@ -173,7 +173,7 @@
         "description": "Smooth and sweet fruit puree used in Bellinis and other fruity drinks.",
         "type": "Puree",
         "alcohol_content": 0,
-        "image": "/images/ingredients/peach.png"
+        "image": "/images/ingredients/peach-puree.png"
     },
     {
         "id": "egg-white",
@@ -293,7 +293,7 @@
         "description": "Korean clear spirit typically made from rice or other grains.",
         "type": "Spirit",
         "alcohol_content": 20,
-        "image": "/images/ingredients/soju.png"
+        "image": "/images/ingredients/soju-1.png"
     },
     {
         "id": "bacardi-1",
@@ -301,7 +301,7 @@
         "description": "Popular white rum brand, used in many classic cocktails.",
         "type": "Spirit",
         "alcohol_content": 40,
-        "image": "/images/ingredients/bacardi.png"
+        "image": "/images/ingredients/bacardi-1.png"
     },
     {
         "id": "coconut-syrup",
@@ -349,7 +349,7 @@
         "description": "Concentrated flavoring made from orange peels, adds depth and complexity.",
         "type": "Bitters",
         "alcohol_content": 35,
-        "image": "/images/ingredients/orange-bitters.png"
+        "image": "/images/ingredients/orange-bitters-1.png"
     },
     {
         "id": "sparkling-water",
@@ -365,7 +365,7 @@
         "description": "Sweet liqueur made from cherries, adds fruity flavor to cocktails.",
         "type": "Liqueur",
         "alcohol_content": 25,
-        "image": "/images/ingredients/cherry-liqueur.jpg"
+        "image": "/images/ingredients/cherry-liqueur-1.png"
     },
     {
         "id": "strawberry",
