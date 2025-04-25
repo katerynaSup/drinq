@@ -24,13 +24,13 @@ const BarNavbar = ({ barItemCount = 0 }) => {
                     </NavLink>
                     <NavLink
                         to="/my-bar"
-                        className="nav-link bar-link"
+                        className="bar-link"
                     >
-                        <FontAwesomeIcon icon={faGlassWhiskey} className="bar-icon" />
+                        <span className="bar-icon">🍹</span>
                         {barItemCount > 0 && (
                             <span className="bar-count">{barItemCount}</span>
                         )}
-                        <span className="bar-text">Bar</span>
+                        <span className="bar-text">My Bar</span>
                     </NavLink>
                 </div>
             </div>

@@ -13,10 +13,12 @@
   justify-content: center;
   text-align: center;
   padding: 10px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 5px 15px var(--accent-color);
   transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   opacity: 0;
+  font-weight: 800;
   z-index: 1000;
+
 }
 
 .coaster.visible {
@@ -26,8 +28,8 @@
 
 .coaster p {
   color: var(--primary-color);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 900;
 }
 
 .coaster:after {
