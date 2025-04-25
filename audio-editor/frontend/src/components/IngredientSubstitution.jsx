@@ -5,7 +5,7 @@ import substitutionsData from '../data/substitutions.json';
 
 const IngredientSubstitution = ({ ingredient, amount, unit }) => {
     const [showSubstitutes, setShowSubstitutes] = useState(false);
-    const ingredientKey = ingredient.toLowerCase().replace(' ', '-');
+    const ingredientKey = (ingredient.charAt(0).toUpperCase() + ingredient.slice(1)).replace(' ', '-');
     const substitutions = substitutionsData[ingredientKey]?.substitutions || [];
 
     return (
@@ -19,7 +19,7 @@ const IngredientSubstitution = ({ ingredient, amount, unit }) => {
 
             {showSubstitutes && (
                 <div className="substitutes-section">
-                    <h3>Substitutes for {ingredient}</h3>
+                    <h3>Substitutes for {ingredient.charAt(0).toUpperCase() + ingredient.slice(1)}</h3>
                     {substitutions.map((sub, index) => (
                         <div key={index} className="sub-item">
                             <div className="sub-header">
