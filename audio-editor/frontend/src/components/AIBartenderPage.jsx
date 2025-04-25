@@ -48,7 +48,11 @@ const AIBartenderPage = () => {
                 body: JSON.stringify({
                     ingredients: barItems,
                     user_prompt: userPrompt || undefined,
-                    count: 3 // Generate 3 drinks by default
+                    count: 3, // Generate 3 drinks by default
+                    llm_config: {
+                        provider: "gemini",  // Specify the provider here
+                        model_name: "gemini-2.0-flash"  // Optional: specify a model
+                    }
                 }),
             });
 
