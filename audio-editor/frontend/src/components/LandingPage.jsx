@@ -10,14 +10,6 @@ const LandingPage = () => {
                 <h1 className="hero-title">Bar Drink Explorer</h1>
                 <p className="hero-subtitle">Discover and mix the perfect drinks with ingredients you have</p>
 
-                <div className="filter-tabs">
-                    <Link to="/ingredients" className="filter-tab">
-                        Explore/Add Ingredients
-                    </Link>
-                    <Link to="/drinks" className="filter-tab">
-                        Explore All Drinks
-                    </Link>
-                </div>
             </div>
 
             <div className="feature-section">
@@ -26,6 +18,7 @@ const LandingPage = () => {
                     <div className="feature-icon">🥄</div>
                     <h3>Browse Ingredients</h3>
                     <p>Add ingredients from your home bar and discover drinks you can make right now.</p>
+                    <Link to="/ingredients" className="feature-button">Search Ingredients</Link>
                 </div>
 
                 <div className="feature-card">
@@ -49,9 +42,9 @@ const LandingPage = () => {
                         <h3>Margarita</h3>
                     </Link>
 
-                    <Link to="/drinks/old-fashioned" className="popular-drink-card">
+                    <Link to="/drinks/paloma" className="popular-drink-card">
                         <div className="popular-drink-image">🥃</div>
-                        <h3>Old Fashioned</h3>
+                        <h3>Paloma</h3>
                     </Link>
 
                     <Link to="/drinks/cosmopolitan" className="popular-drink-card">
